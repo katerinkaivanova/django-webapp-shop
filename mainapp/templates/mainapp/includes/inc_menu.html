@@ -1,0 +1,18 @@
+{% load static %}
+
+{% block menu %}
+    <div class="header-top">
+        <a class="logo" href="{% url 'index' %}"><img src="{% static 'img/logo.svg' %}" alt="logo"></a>
+        <nav>
+            <ul class="menu">
+                <li><a href="{% url 'index' %}" class="menu-link">Home</a></li>
+                <li><a href="{% url 'products' %}" class="menu-link">Products</a></li>
+                <li><a href="#" class="menu-link">History</a></li>
+                <li><a href="#" class="menu-link">Showroom</a></li>
+                <li><a href="{% url 'contact' %}" class="menu-link menu-link-active">Contact</a></li>
+                <li><a href="#" class="menu-link"><img src="{% static 'img/search.svg' %}" alt="search"></a></li>
+            </ul>
+        </nav>
+        <img src="{% static 'img/menu-hamburger.png' %}" class="menu-mini" alt="menu-mini">
+    </div>
+{% endblock %}

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>
+        {% block title %}
+            {{ title|title }}
+        {% endblock %}
+    </title>
+
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,300,400,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+    {% block css %}
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    {% endblock %}
+
+    {% block js %}
+    {% endblock %}
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="top">
+            {% block header %}
+            {% endblock %}
+        </div>
+
+        <main>
+            {% block content %}
+            {% endblock %}
+        </main>>
+
+        {% block footer %}
+            <footer class="footer">
+                <div class="container">
+                    <div class="footer-top padding-site">
+                        <div class="footer-contacts">
+                            <h3 class="footer-h3">Contact Us</h3>
+                            <p class="footer-top-p">132A Bridge Road Richmond VIC Australia.</p>
+                            <p class="footer-top-p">Talk to us on 1300 132 info@interior.com</p>
+                        </div>
+                        <div class="useful-info">
+                            <h3 class="footer-h3">Useful Information</h3>
+                            <div class="useful-links">
+                                <ul class="footer-ul">
+                                    <li><a href="#" class="useful-link">Sales terms</a></li>
+                                    <li><a href="#" class="useful-link">Customer care</a></li>
+                                    <li><a href="#" class="useful-link">Delivery</a></li>
+                                </ul>
+                                <ul class="footer-ul">
+                                    <li><a href="#" class="useful-link">Architect accounts</a></li>
+                                    <li><a href="#" class="useful-link">Careers</a></li>
+                                    <li><a href="#" class="useful-link">Exchanges &#38; returns</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="subscribe">
+                            <h3 class="footer-h3">Let’s Stay in Touch!</h3>
+                            <p class="footer-top-p">Suscribe to know about our latest news, products and special offers just for suscribers.</p>
+                            <div class="input-block">
+                                <input type="email" name="email" id="email" class="subscribe-email" placeholder="your email address">
+                                <button type="submit" class="subscribe-btn"><i class="fab fa-telegram-plane fa-2x"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="footer-bottom padding-site">
+                        <p class="footer-bottom-p">&#169; Copyright - INTERIOR 2016. All Rights Reserved.</p>
+                        <div class="footer-social">
+                            <a href="#" class="social-btn" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="social-btn" target="_blank"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="social-btn" target="_blank"><i class="fab fa-google-plus-g"></i></a>
+                            <a href="#" class="social-btn" target="_blank"><i class="fab fa-pinterest-p"></i></a>
+                        </div>
+                        <p class="footer-bottom-p">Terms &#38; Conditions / Privacy policy &#38; Cookies</p>
+                    </div>
+                </div>
+            </footer>
+        {% endblock %}
+    </div>
+
+</body>
+</html>
