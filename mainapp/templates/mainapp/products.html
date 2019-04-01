@@ -1,208 +1,152 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'mainapp/base.html' %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Catalog</title>
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,300,400,700" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-    <link rel="stylesheet" href="/static/css/style.css">
-</head>
+{% load static %}
 
-<body>
-    <div class="wrapper">
-        <div class="top">
-            <header class="header grey">
-                <div class="container">
-                    <div class="catalog padding-site">
-                        <div class="header-top">
-                            <a class="logo" href="/l"><img src="/static/img/logo.svg" alt="logo"></a>
-                            <nav>
-                                <ul class="menu">
-                                    <li><a href="/" class="menu-link">Home</a></li>
-                                    <li><a href="/products/" class="menu-link menu-link-active ">Products</a></li>
-                                    <li><a href="#" class="menu-link">History</a></li>
-                                    <li><a href="#l" class="menu-link">Showroom</a></li>
-                                    <li><a href="/contact/" class="menu-link">Contact</a></li>
-                                    <li><a href="#" class="menu-link"><img src="/static/img/search.svg" alt="search"></a></li>
-                                </ul>
-                            </nav>
-                            <img src="/static/img/menu-hamburger.png" class="menu-mini" alt="menu-mini">
-                        </div>
-                        <h1 class="catalog-title">Our Products Range</h1>
-                    </div>
-                </div>
-            </header>
-            <main>
-                <div class="container">
-                    <section class="catalog-products padding-site">
-                        <div class="catalog-products-top">
-                            <div class="catalog-tab-control">
-                                <a href="#" class="tab-link tab-link-active">All</a>
-                                <a href="#" class="tab-link tab-link-preactive">Home</a>
-                                <a href="#" class="tab-link tab-link-preactive">Office</a>
-                                <a href="#" class="tab-link">Furniture</a>
-                                <a href="#" class="tab-link">Modern</a>
-                                <a href="#" class="tab-link">Classic</a>
-                            </div>
-                        </div>
-                        <div class="catalog-box">
-                            <div class="catalog-item" style="background-image: url(../../../static/img/product-11.jpg)">
-                                <div class="product-text">
-                                    <a href="#" class="product-link"><img src="/static/img/arrow.svg" alt="arrow"></a>
-                                    <h3 class="product-h3">Fishnet Chair</h3>
-                                    <p class="product-p">Seat and back with upholstery made of cold cure foam</p>
-                                </div>
-                            </div>
-                            <div class="catalog-item" style="background-image: url(../../../static/img/product-21.jpg)">
-                                <div class="product-text">
-                                    <a href="#" class="product-link"><img src="/static/img/arrow.svg" alt="arrow"></a>
-                                    <h3 class="product-h3">Fishnet Chair</h3>
-                                    <p class="product-p">Seat and back with upholstery made of cold cure foam</p>
-                                </div>
-                            </div>
-                            <div class="catalog-item" style="background-image: url(../../../static/img/product-31.jpg)">
-                                <div class="product-text">
-                                    <a href="#" class="product-link"><img src="/static/img/arrow.svg" alt="arrow"></a>
-                                    <h3 class="product-h3">Fishnet Chair</h3>
-                                    <p class="product-p">Seat and back with upholstery made of cold cure foam</p>
-                                </div>
-                            </div>
-                            <div class="catalog-item" style="background-image: url(../../../static/img/product-41.jpg)">
-                                <div class="product-text">
-                                    <a href="#" class="product-link"><img src="/static/img/arrow.svg" alt="arrow"></a>
-                                    <h3 class="product-h3">Fishnet Chair</h3>
-                                    <p class="product-p">Seat and back with upholstery made of cold cure foam</p>
-                                </div>
-                            </div>
-                            <div class="catalog-item" style="background-image: url(../../../static/img/product-5.jpg)">
-                                <div class="product-text">
-                                    <a href="#" class="product-link"><img src="/static/img/arrow.svg" alt="arrow"></a>
-                                    <h3 class="product-h3">Fishnet Chair</h3>
-                                    <p class="product-p">Seat and back with upholstery made of cold cure foam</p>
-                                </div>
-                            </div>
-                            <div class="catalog-item" style="background-image: url(../../../static/img/product-6.jpg)">
-                                <div class="product-text">
-                                    <a href="#" class="product-link"><img src="/static/img/arrow.svg" alt="arrow"></a>
-                                    <h3 class="product-h3">Fishnet Chair</h3>
-                                    <p class="product-p">Seat and back with upholstery made of cold cure foam</p>
-                                </div>
-                            </div>
-                            <div class="catalog-item" style="background-image: url(../../../static/img/product-11.jpg)">
-                                <div class="product-text">
-                                    <a href="#" class="product-link"><img src="/static/img/arrow.svg" alt="arrow"></a>
-                                    <h3 class="product-h3">Fishnet Chair</h3>
-                                    <p class="product-p">Seat and back with upholstery made of cold cure foam</p>
-                                </div>
-                            </div>
-                            <div class="catalog-item" style="background-image: url(../../../static/img/product-21.jpg)">
-                                <div class="product-text">
-                                    <a href="#" class="product-link"><img src="/static/img/arrow.svg" alt="arrow"></a>
-                                    <h3 class="product-h3">Fishnet Chair</h3>
-                                    <p class="product-p">Seat and back with upholstery made of cold cure foam</p>
-                                </div>
-                            </div>
-                            <div class="catalog-item" style="background-image: url(../../../static/img/product-31.jpg)">
-                                <div class="product-text">
-                                    <a href="#" class="product-link"><img src="/static/img/arrow.svg" alt="arrow"></a>
-                                    <h3 class="product-h3">Fishnet Chair</h3>
-                                    <p class="product-p">Seat and back with upholstery made of cold cure foam</p>
-                                </div>
-                            </div>
-                            <div class="catalog-item" style="background-image: url(../../../static/img/product-41.jpg)">
-                                <div class="product-text">
-                                    <a href="#" class="product-link"><img src="/static/img/arrow.svg" alt="arrow"></a>
-                                    <h3 class="product-h3">Fishnet Chair</h3>
-                                    <p class="product-p">Seat and back with upholstery made of cold cure foam</p>
-                                </div>
-                            </div>
-                            <div class="catalog-item" style="background-image: url(../../../static/img/product-5.jpg)">
-                                <div class="product-text">
-                                    <a href="#" class="product-link"><img src="/static/img/arrow.svg" alt="arrow"></a>
-                                    <h3 class="product-h3">Fishnet Chair</h3>
-                                    <p class="product-p">Seat and back with upholstery made of cold cure foam</p>
-                                </div>
-                            </div>
-                            <div class="catalog-item" style="background-image: url(../../../static/img/product-6.jpg)">
-                                <div class="product-text">
-                                    <a href="#" class="product-link"><img src="/static/img/arrow.svg" alt="arrow"></a>
-                                    <h3 class="product-h3">Fishnet Chair</h3>
-                                    <p class="product-p">Seat and back with upholstery made of cold cure foam</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="upload-block">
-                            <a href="#" class="upload-link"><img src="/static/img/upload-arrows.png" alt="arrow"></a>
-                        </div>
-                    </section>
-                    <section class="promo-product">
-                        <div class="promo-content" style="background-image: url(../../../static/img/promo-img1.jpg)">
-                            <div class="promo-text">
-                                <h4 class="promo-h4">Exclusive</h4>
-                                <h2 class="promo-h2">Fishnet Chair</h2>
-                                <p class="promo-p">Seat and back with upholstery made of cold cure foam. Steel frame, available in matt</p>
-                                <a href="#" class="button">order us</a>
-                            </div>
-                        </div>
-                        <div class="promo-content" style="background-image: url(../../../static/img/promo-img.jpg)">
-                            <div class="promo-text">
-                                <h4 class="promo-h4">Exclusive</h4>
-                                <h2 class="promo-h2">Fishnet Chair</h2>
-                                <p class="promo-p">Seat and back with upholstery made of cold cure foam. Steel frame, available in matt</p>
-                                <a href="#" class="button">order us</a>
-                            </div>
-                        </div>
-                    </section>
-                </div>
-            </main>
+{% block title %}
+    {{ title|capfirst }}
+{% endblock %}
+
+{% block header %}
+    <header class="header grey">
+        <div class="container">
+            <div class="catalog padding-site">
+
+                {% include 'mainapp/includes/inc_menu.html' %}
+                <h1 class="catalog-title">Our Products Range</h1>
+
+            </div>
         </div>
-        <footer class="footer">
-            <div class="container">
-                <div class="footer-top padding-site">
-                    <div class="footer-contacts">
-                        <h3 class="footer-h3">Contact Us</h3>
-                        <p class="footer-top-p">132A Bridge Road Richmond VIC Australia.</p>
-                        <p class="footer-top-p">Talk to us on 1300 132 info@interior.com</p>
-                    </div>
-                    <div class="useful-info">
-                        <h3 class="footer-h3">Useful Information</h3>
-                        <div class="useful-links">
-                            <ul class="footer-ul">
-                                <li><a href="#" class="useful-link">Sales terms</a></li>
-                                <li><a href="#" class="useful-link">Customer care</a></li>
-                                <li><a href="#" class="useful-link">Delivery</a></li>
-                            </ul>
-                            <ul class="footer-ul">
-                                <li><a href="#" class="useful-link">Architect accounts</a></li>
-                                <li><a href="#" class="useful-link">Careers</a></li>
-                                <li><a href="#" class="useful-link">Exchanges &#38; returns</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="subscribe">
-                        <h3 class="footer-h3">Let’s Stay in Touch!</h3>
-                        <p class="footer-top-p">Suscribe to know about our latest news, products and special offers just for suscribers.</p>
-                        <div class="input-block">
-                            <input type="email" name="email" id="email" class="subscribe-email" placeholder="your email address">
-                            <button type="submit" class="subscribe-btn"><i class="fab fa-telegram-plane fa-2x"></i></button>
-                        </div>
+    </header>
+    {{ links_menu.href.1}}
+{% endblock %}
+
+
+{% block content %}
+    <div class="container">
+        <section class="catalog-products padding-site">
+            <div class="catalog-products-top">
+
+                {% include 'mainapp/includes/inc_categories_menu.html' %}
+
+                <!--
+                <div class="catalog-tab-control">
+                    <a href="#" class="tab-link tab-link-active">All</a>
+                    <a href="#" class="tab-link tab-link-preactive">Home</a>
+                    <a href="#" class="tab-link tab-link-preactive">Office</a>
+                    <a href="#" class="tab-link">Furniture</a>
+                    <a href="#" class="tab-link">Modern</a>
+                    <a href="#" class="tab-link">Classic</a>
+                </div>
+                -->
+
+            </div>
+            <div class="catalog-box">
+                <div class="catalog-item" style="background-image: url(../../../static/img/product-11.jpg)">
+                    <div class="product-text">
+                        <a href="#" class="product-link"><img src="{% static 'img/arrow.svg' %}" alt="arrow"></a>
+                        <h3 class="product-h3">Fishnet Chair</h3>
+                        <p class="product-p">Seat and back with upholstery made of cold cure foam</p>
                     </div>
                 </div>
-                <div class="footer-bottom padding-site">
-                    <p class="footer-bottom-p">&#169; Copyright - INTERIOR 2016. All Rights Reserved.</p>
-                    <div class="footer-social">
-                        <a href="#" class="social-btn" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="social-btn" target="_blank"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="social-btn" target="_blank"><i class="fab fa-google-plus-g"></i></a>
-                        <a href="#" class="social-btn" target="_blank"><i class="fab fa-pinterest-p"></i></a>
+                <div class="catalog-item" style="background-image: url(../../../static/img/product-21.jpg)">
+                    <div class="product-text">
+                        <a href="#" class="product-link"><img src="{% static 'img/arrow.svg' %}" alt="arrow"></a>
+                        <h3 class="product-h3">Fishnet Chair</h3>
+                        <p class="product-p">Seat and back with upholstery made of cold cure foam</p>
                     </div>
-                    <p class="footer-bottom-p">Terms &#38; Conditions / Privacy policy &#38; Cookies</p>
+                </div>
+                <div class="catalog-item" style="background-image: url(../../../static/img/product-31.jpg)">
+                    <div class="product-text">
+                        <a href="#" class="product-link"><img src="{% static 'img/arrow.svg' %}" alt="arrow"></a>
+                        <h3 class="product-h3">Fishnet Chair</h3>
+                        <p class="product-p">Seat and back with upholstery made of cold cure foam</p>
+                    </div>
+                </div>
+                <div class="catalog-item" style="background-image: url(../../../static/img/product-41.jpg)">
+                    <div class="product-text">
+                        <a href="#" class="product-link"><img src="{% static 'img/arrow.svg' %}" alt="arrow"></a>
+                        <h3 class="product-h3">Fishnet Chair</h3>
+                        <p class="product-p">Seat and back with upholstery made of cold cure foam</p>
+                    </div>
+                </div>
+                <div class="catalog-item" style="background-image: url(../../../static/img/product-5.jpg)">
+                    <div class="product-text">
+                        <a href="#" class="product-link"><img src="{% static 'img/arrow.svg' %}" alt="arrow"></a>
+                        <h3 class="product-h3">Fishnet Chair</h3>
+                        <p class="product-p">Seat and back with upholstery made of cold cure foam</p>
+                    </div>
+                </div>
+                <div class="catalog-item" style="background-image: url(../../../static/img/product-6.jpg)">
+                    <div class="product-text">
+                        <a href="#" class="product-link"><img src="{% static 'img/arrow.svg' %}" alt="arrow"></a>
+                        <h3 class="product-h3">Fishnet Chair</h3>
+                        <p class="product-p">Seat and back with upholstery made of cold cure foam</p>
+                    </div>
+                </div>
+                <div class="catalog-item" style="background-image: url(../../../static/img/product-11.jpg)">
+                    <div class="product-text">
+                        <a href="#" class="product-link"><img src="{% static 'img/arrow.svg' %}" alt="arrow"></a>
+                        <h3 class="product-h3">Fishnet Chair</h3>
+                        <p class="product-p">Seat and back with upholstery made of cold cure foam</p>
+                    </div>
+                </div>
+                <div class="catalog-item" style="background-image: url(../../../static/img/product-21.jpg)">
+                    <div class="product-text">
+                        <a href="#" class="product-link"><img src="{% static 'img/arrow.svg' %}" alt="arrow"></a>
+                        <h3 class="product-h3">Fishnet Chair</h3>
+                        <p class="product-p">Seat and back with upholstery made of cold cure foam</p>
+                    </div>
+                </div>
+                <div class="catalog-item" style="background-image: url(../../../static/img/product-31.jpg)">
+                    <div class="product-text">
+                        <a href="#" class="product-link"><img src="{% static 'img/arrow.svg' %}" alt="arrow"></a>
+                        <h3 class="product-h3">Fishnet Chair</h3>
+                        <p class="product-p">Seat and back with upholstery made of cold cure foam</p>
+                    </div>
+                </div>
+                <div class="catalog-item" style="background-image: url(../../../static/img/product-41.jpg)">
+                    <div class="product-text">
+                        <a href="#" class="product-link"><img src="{% static 'img/arrow.svg' %}" alt="arrow"></a>
+                        <h3 class="product-h3">Fishnet Chair</h3>
+                        <p class="product-p">Seat and back with upholstery made of cold cure foam</p>
+                    </div>
+                </div>
+                <div class="catalog-item" style="background-image: url(../../../static/img/product-5.jpg)">
+                    <div class="product-text">
+                        <a href="#" class="product-link"><img src="{% static 'img/arrow.svg' %}" alt="arrow"></a>
+                        <h3 class="product-h3">Fishnet Chair</h3>
+                        <p class="product-p">Seat and back with upholstery made of cold cure foam</p>
+                    </div>
+                </div>
+                <div class="catalog-item" style="background-image: url(../../../static/img/product-6.jpg)">
+                    <div class="product-text">
+                        <a href="#" class="product-link"><img src="{% static 'img/arrow.svg' %}" alt="arrow"></a>
+                        <h3 class="product-h3">Fishnet Chair</h3>
+                        <p class="product-p">Seat and back with upholstery made of cold cure foam</p>
+                    </div>
                 </div>
             </div>
-        </footer>
+            <div class="upload-block">
+                <a href="#" class="upload-link"><img src="{% static 'img/arrow.svg' %}" alt="arrow"></a>
+            </div>
+        </section>
+        <section class="promo-product">
+            <div class="promo-content" style="background-image: url(../../../static/img/promo-img1.jpg)">
+                <div class="promo-text">
+                    <h4 class="promo-h4">Exclusive</h4>
+                    <h2 class="promo-h2">Fishnet Chair</h2>
+                    <p class="promo-p">Seat and back with upholstery made of cold cure foam. Steel frame, available in matt</p>
+                    <a href="#" class="button">order us</a>
+                </div>
+            </div>
+            <div class="promo-content" style="background-image: url(../../../static/img/promo-img.jpg)">
+                <div class="promo-text">
+                    <h4 class="promo-h4">Exclusive</h4>
+                    <h2 class="promo-h2">Fishnet Chair</h2>
+                    <p class="promo-p">Seat and back with upholstery made of cold cure foam. Steel frame, available in matt</p>
+                    <a href="#" class="button">order us</a>
+                </div>
+            </div>
+        </section>
     </div>
-</body>
-
-</html>
+{% endblock %}

@@ -1,139 +1,75 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'mainapp/base.html' %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Contacts</title>
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,300,400,700" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-    <link rel="stylesheet" href="/static/css/style.css">
-</head>
+{% load static %}
 
-<body>
-    <div class="wrapper">
-        <div class="top">
-            <header class="header grey">
-                <div class="container">
-                    <div class="catalog padding-site">
-                        <div class="header-top">
-                            <a class="logo" href="/"><img src="/static/img/logo.svg" alt="logo"></a>
-                            <nav>
-                                <ul class="menu">
-                                    <li><a href="/" class="menu-link">Home</a></li>
-                                    <li><a href="/products/" class="menu-link">Products</a></li>
-                                    <li><a href="#" class="menu-link">History</a></li>
-                                    <li><a href="#" class="menu-link">Showroom</a></li>
-                                    <li><a href="/contact/" class="menu-link menu-link-active">Contact</a></li>
-                                    <li><a href="#" class="menu-link"><img src="/static/img/search.svg" alt="search"></a></li>
-                                </ul>
-                            </nav>
-                            <img src="/static/img/menu-hamburger.png" class="menu-mini" alt="menu-mini">
-                        </div>
-                        <h1 class="contacts-title">Contact Us</h1>
-                    </div>
-                </div>
-            </header>
-            <main>
-                <div class="container">
-                    <section class="contacts-box padding-site">
-                        <article class="contact-item">
-                            <img src="/static/img/geo-marker.png" alt="marker">
-                            <h3 class="contact-name">California</h3>
-                            <div class="contact-value">
-                                <h4 class="contact-title">Phone:</h4>
-                                <p class="contact-phone">1900 - 1234 - 5678</p>
-                            </div>
-                            <div class="contact-value">
-                                <h4 class="contact-title">Email:</h4>
-                                <p class="contact-email">info@interior.com</p>
-                            </div>
-                            <div class="contact-value">
-                                <h4 class="contact-title">Address:</h4>
-                                <p class="contact-address">12 W 1st St, 90001 Los Angeles, California</p>
-                            </div>
-                        </article>
-                        <article class="contact-item">
-                            <img src="/static/img/geo-marker.png" alt="marker">
-                            <h3 class="contact-name">California</h3>
-                            <div class="contact-value">
-                                <h4 class="contact-title">Phone:</h4>
-                                <p class="contact-phone">1900 - 1234 - 5678</p>
-                            </div>
-                            <div class="contact-value">
-                                <h4 class="contact-title">Email:</h4>
-                                <p class="contact-email">info@interior.com</p>
-                            </div>
-                            <div class="contact-value">
-                                <h4 class="contact-title">Address:</h4>
-                                <p class="contact-address">12 W 1st St, 90001 Los Angeles, California</p>
-                            </div>
-                        </article>
-                        <article class="contact-item">
-                            <img src="/static/img/geo-marker.png" alt="marker">
-                            <h3 class="contact-name">California</h3>
-                            <div class="contact-value">
-                                <h4 class="contact-title">Phone:</h4>
-                                <p class="contact-phone">1900 - 1234 - 5678</p>
-                            </div>
-                            <div class="contact-value">
-                                <h4 class="contact-title">Email:</h4>
-                                <p class="contact-email">info@interior.com</p>
-                            </div>
-                            <div class="contact-value">
-                                <h4 class="contact-title">Address:</h4>
-                                <p class="contact-address">12 W 1st St, 90001 Los Angeles, California</p>
-                            </div>
-                        </article>
-                    </section>
-                </div>
-            </main>
-        </div>
-        <footer class="footer">
-            <div class="container">
-                <div class="footer-top padding-site">
-                    <div class="footer-contacts">
-                        <h3 class="footer-h3">Contact Us</h3>
-                        <p class="footer-top-p">132A Bridge Road Richmond VIC Australia.</p>
-                        <p class="footer-top-p">Talk to us on 1300 132 info@interior.com</p>
-                    </div>
-                    <div class="useful-info">
-                        <h3 class="footer-h3">Useful Information</h3>
-                        <div class="useful-links">
-                            <ul class="footer-ul">
-                                <li><a href="#" class="useful-link">Sales terms</a></li>
-                                <li><a href="#" class="useful-link">Customer care</a></li>
-                                <li><a href="#" class="useful-link">Delivery</a></li>
-                            </ul>
-                            <ul class="footer-ul">
-                                <li><a href="#" class="useful-link">Architect accounts</a></li>
-                                <li><a href="#" class="useful-link">Careers</a></li>
-                                <li><a href="#" class="useful-link">Exchanges &#38; returns</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="subscribe">
-                        <h3 class="footer-h3">Let’s Stay in Touch!</h3>
-                        <p class="footer-top-p">Suscribe to know about our latest news, products and special offers just for suscribers.</p>
-                        <div class="input-block">
-                            <input type="email" name="email" id="email" class="subscribe-email" placeholder="your email address">
-                            <button type="submit" class="subscribe-btn"><i class="fab fa-telegram-plane fa-2x"></i></button>
-                        </div>
-                    </div>
-                </div>
-                <div class="footer-bottom padding-site">
-                    <p class="footer-bottom-p">&#169; Copyright - INTERIOR 2016. All Rights Reserved.</p>
-                    <div class="footer-social">
-                        <a href="#" class="social-btn" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="social-btn" target="_blank"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="social-btn" target="_blank"><i class="fab fa-google-plus-g"></i></a>
-                        <a href="#" class="social-btn" target="_blank"><i class="fab fa-pinterest-p"></i></a>
-                    </div>
-                    <p class="footer-bottom-p">Terms &#38; Conditions / Privacy policy &#38; Cookies</p>
-                </div>
+{% block title %}
+    {{ title|capfirst }}
+{% endblock %}
+
+{% block header %}
+    <header class="header grey">
+        <div class="container">
+            <div class="catalog padding-site">
+
+                {% include 'mainapp/includes/inc_menu.html' %}
+                <h1 class="contacts-title">Contact Us</h1>
+
             </div>
-        </footer>
-    </div>
-</body>
+        </div>
+    </header>
+{% endblock %}
 
-</html>
+{% block content %}
+    <div class="container">
+        <section class="contacts-box padding-site">
+            <article class="contact-item">
+                <img src="{% static 'img/geo-marker.png' %}" alt="marker">
+                <h3 class="contact-name">California</h3>
+                <div class="contact-value">
+                    <h4 class="contact-title">Phone:</h4>
+                    <p class="contact-phone">1900 - 1234 - 5678</p>
+                </div>
+                <div class="contact-value">
+                    <h4 class="contact-title">Email:</h4>
+                    <p class="contact-email">info@interior.com</p>
+                </div>
+                <div class="contact-value">
+                    <h4 class="contact-title">Address:</h4>
+                    <p class="contact-address">12 W 1st St, 90001 Los Angeles, California</p>
+                </div>
+            </article>
+            <article class="contact-item">
+                <img src="{% static 'img/geo-marker.png' %}" alt="marker">
+                <h3 class="contact-name">California</h3>
+                <div class="contact-value">
+                    <h4 class="contact-title">Phone:</h4>
+                    <p class="contact-phone">1900 - 1234 - 5678</p>
+                </div>
+                <div class="contact-value">
+                    <h4 class="contact-title">Email:</h4>
+                    <p class="contact-email">info@interior.com</p>
+                </div>
+                <div class="contact-value">
+                    <h4 class="contact-title">Address:</h4>
+                    <p class="contact-address">12 W 1st St, 90001 Los Angeles, California</p>
+                </div>
+            </article>
+            <article class="contact-item">
+                <img src="{% static 'img/geo-marker.png' %}" alt="marker">
+                <h3 class="contact-name">California</h3>
+                <div class="contact-value">
+                    <h4 class="contact-title">Phone:</h4>
+                    <p class="contact-phone">1900 - 1234 - 5678</p>
+                </div>
+                <div class="contact-value">
+                    <h4 class="contact-title">Email:</h4>
+                    <p class="contact-email">info@interior.com</p>
+                </div>
+                <div class="contact-value">
+                    <h4 class="contact-title">Address:</h4>
+                    <p class="contact-address">12 W 1st St, 90001 Los Angeles, California</p>
+                </div>
+            </article>
+        </section>
+    </div>
+{% endblock %}
