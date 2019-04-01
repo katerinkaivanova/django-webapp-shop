@@ -55,7 +55,7 @@ ROOT_URLCONF = 'geekshop.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, "mainapp/templates/mainapp")],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

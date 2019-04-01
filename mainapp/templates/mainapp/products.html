@@ -3,7 +3,7 @@
 {% load static %}
 
 {% block title %}
-    <title>Catalog</title>
+    {{ title|capfirst }}
 {% endblock %}
 
 {% block header %}
@@ -17,12 +17,18 @@
             </div>
         </div>
     </header>
+    {{ links_menu.href.1}}
 {% endblock %}
+
 
 {% block content %}
     <div class="container">
         <section class="catalog-products padding-site">
             <div class="catalog-products-top">
+
+                {% include 'mainapp/includes/inc_categories_menu.html' %}
+
+                <!--
                 <div class="catalog-tab-control">
                     <a href="#" class="tab-link tab-link-active">All</a>
                     <a href="#" class="tab-link tab-link-preactive">Home</a>
@@ -31,6 +37,8 @@
                     <a href="#" class="tab-link">Modern</a>
                     <a href="#" class="tab-link">Classic</a>
                 </div>
+                -->
+
             </div>
             <div class="catalog-box">
                 <div class="catalog-item" style="background-image: url(../../../static/img/product-11.jpg)">

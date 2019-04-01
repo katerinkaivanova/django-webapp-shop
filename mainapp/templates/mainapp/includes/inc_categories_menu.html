@@ -1,0 +1,13 @@
+{% load static %}
+
+{% block categories %}
+
+    <div class="catalog-tab-control">
+        {% for link in links_categories %}
+
+            <a href="#" class="tab-link"> {{ link.name }} </a>
+
+        {% endfor %}
+    </div>
+
+{% endblock %}

@@ -2,14 +2,22 @@
 
 {% block menu %}
     <div class="header-top">
-        <a class="logo" href="{% url 'index' %}"><img src="{% static 'img/logo.svg' %}" alt="logo"></a>
+        <a class="logo" href="{% url links_menu.0.href %}"><img src="{% static 'img/logo.svg' %}" alt="logo"></a>
         <nav>
             <ul class="menu">
-                <li><a href="{% url 'index' %}" class="menu-link">Home</a></li>
-                <li><a href="{% url 'products' %}" class="menu-link">Products</a></li>
-                <li><a href="#" class="menu-link">History</a></li>
-                <li><a href="#" class="menu-link">Showroom</a></li>
-                <li><a href="{% url 'contact' %}" class="menu-link menu-link-active">Contact</a></li>
+
+                {% for link in links_menu %}
+                    <li>
+                        <a href="{% url link.href %}"
+                           class="menu-link
+                            {% if request.resolver_match.url_name == link.href %}
+                                menu-link-active
+                            {% endif %}">
+                            {{ link.name }}
+                        </a>
+                    </li>
+                {% endfor %}
+
                 <li><a href="#" class="menu-link"><img src="{% static 'img/search.svg' %}" alt="search"></a></li>
             </ul>
         </nav>
