@@ -42,34 +42,17 @@
                 <a href="#" class="explore">explore all</a>
             </div>
             <div class="product-box">
-                <div class="product" style="background-image: url(../../../static/img/product-1.jpg)">
-                    <div class="product-text">
-                        <a href="#" class="product-link"><img src="{% static 'img/arrow.svg' %}" alt="arrow"></a>
-                        <h3 class="product-h3">Fishnet Chair</h3>
-                        <p class="product-p">Seat and back with upholstery made of cold cure foam</p>
+
+                {% for product in products %}
+                    <div class="product" style="background-image: url({{ product.image.url }}); background-size: contain">
+                        <div class="product-text">
+                            <a href="#" class="product-link"><img src="{% static 'img/arrow.svg' %}" alt="arrow"></a>
+                            <h3 class="product-h3">{{ product.name }}</h3>
+                            <p class="product-p">{{ product.description }}</p>
+                        </div>
                     </div>
-                </div>
-                <div class="product" style="background-image: url(../../../static/img/product-2.jpg)">
-                    <div class="product-text">
-                        <a href="#" class="product-link"><img src="{% static 'img/arrow.svg' %}" alt="arrow"></a>
-                        <h3 class="product-h3">Fishnet Chair</h3>
-                        <p class="product-p">Seat and back with upholstery made of cold cure foam</p>
-                    </div>
-                </div>
-                <div class="product" style="background-image: url(../../../static/img/product-3.jpg)">
-                    <div class="product-text">
-                        <a href="#" class="product-link"><img src="{% static 'img/arrow.svg' %}" alt="arrow"></a>
-                        <h3 class="product-h3">Fishnet Chair</h3>
-                        <p class="product-p">Seat and back with upholstery made of cold cure foam</p>
-                    </div>
-                </div>
-                <div class="product" style="background-image: url(../../../static/img/product-4.jpg)">
-                    <div class="product-text">
-                        <a href="#" class="product-link"><img src="{% static 'img/arrow.svg' %}" alt="arrow"></a>
-                        <h3 class="product-h3">Fishnet Chair</h3>
-                        <p class="product-p">Seat and back with upholstery made of cold cure foam</p>
-                    </div>
-                </div>
+                {% endfor %}
+
             </div>
         </section>
         <section class="promo-product">
@@ -96,48 +79,17 @@
                 <a href="#" class="explore">explore all</a>
             </div>
             <div class="trending-box">
-                <div class="trending-item" style="background-image: url(../../../static/img/product-11.jpg)">
-                    <div class="product-text">
-                        <a href="#" class="product-link"><img src="{% static 'img/arrow.svg' %}" alt="arrow"></a>
-                        <h3 class="product-h3">Fishnet Chair</h3>
-                        <p class="product-p">Seat and back with upholstery made of cold cure foam</p>
+
+                {% for product in trending_products %}
+                    <div class="trending-item" style="background-image: url({{ product.image.url }}); background-size: contain">
+                        <div class="product-text">
+                            <a href="#" class="product-link"><img src="{% static 'img/arrow.svg' %}" alt="arrow"></a>
+                            <h3 class="product-h3">{{ product.name }}</h3>
+                            <p class="product-p">{{ product.description }}</p>
+                        </div>
                     </div>
-                </div>
-                <div class="trending-item" style="background-image: url(../../../static/img/product-21.jpg)">
-                    <div class="product-text">
-                        <a href="#" class="product-link"><img src="{% static 'img/arrow.svg' %}" alt="arrow"></a>
-                        <h3 class="product-h3">Fishnet Chair</h3>
-                        <p class="product-p">Seat and back with upholstery made of cold cure foam</p>
-                    </div>
-                </div>
-                <div class="trending-item" style="background-image: url(../../../static/img/product-31.jpg)">
-                    <div class="product-text">
-                        <a href="#" class="product-link"><img src="{% static 'img/arrow.svg' %}" alt="arrow"></a>
-                        <h3 class="product-h3">Fishnet Chair</h3>
-                        <p class="product-p">Seat and back with upholstery made of cold cure foam</p>
-                    </div>
-                </div>
-                <div class="trending-item" style="background-image: url(../../../static/img/product-41.jpg)">
-                    <div class="product-text">
-                        <a href="#" class="product-link"><img src="{% static 'img/arrow.svg' %}" alt="arrow"></a>
-                        <h3 class="product-h3">Fishnet Chair</h3>
-                        <p class="product-p">Seat and back with upholstery made of cold cure foam</p>
-                    </div>
-                </div>
-                <div class="trending-item" style="background-image: url(../../../static/img/product-5.jpg)">
-                    <div class="product-text">
-                        <a href="#" class="product-link"><img src="{% static 'img/arrow.svg' %}" alt="arrow"></a>
-                        <h3 class="product-h3">Fishnet Chair</h3>
-                        <p class="product-p">Seat and back with upholstery made of cold cure foam</p>
-                    </div>
-                </div>
-                <div class="trending-item" style="background-image: url(../../../static/img/product-6.jpg)">
-                    <div class="product-text">
-                        <a href="#" class="product-link"><img src="{% static 'img/arrow.svg' %}" alt="arrow"></a>
-                        <h3 class="product-h3">Fishnet Chair</h3>
-                        <p class="product-p">Seat and back with upholstery made of cold cure foam</p>
-                    </div>
-                </div>
+                {% endfor %}
+
             </div>
         </section>
         <section class="slider padding-site" style="background-image: url(../../../static/img/slider.jpg)">
@@ -167,34 +119,17 @@
                 </div>
             </div>
             <div class="exclusive-items">
-                <div class="exclusive-item" style="background-image: url(../../../static/img/product-2-sm.jpg)">
-                    <div class="product-text">
-                        <a href="#" class="product-link"><img src="{% static 'img/arrow.svg' %}" alt="arrow"></a>
-                        <h3 class="product-h3">Fishnet Chair</h3>
-                        <p class="product-p">Seat and back with upholstery made of cold cure foam</p>
+
+                {% for product in products %}
+                    <div class="exclusive-item" style="background-image: url({{ product.image.url }}); background-size: contain">
+                        <div class="product-text">
+                            <a href="#" class="product-link"><img src="{% static 'img/arrow.svg' %}" alt="arrow"></a>
+                            <h3 class="product-h3">{{ product.name }}</h3>
+                            <p class="product-p">{{ product.description }}</p>
+                        </div>
                     </div>
-                </div>
-                <div class="exclusive-item" style="background-image: url(../../../static/img/product-3-sm.jpg)">
-                    <div class="product-text">
-                        <a href="#" class="product-link"><img src="{% static 'img/arrow.svg' %}" alt="arrow"></a>
-                        <h3 class="product-h3">Fishnet Chair</h3>
-                        <p class="product-p">Seat and back with upholstery made of cold cure foam</p>
-                    </div>
-                </div>
-                <div class="exclusive-item" style="background-image: url(../../../static/img/product-4-sm.jpg)">
-                    <div class="product-text">
-                        <a href="#" class="product-link"><img src="{% static 'img/arrow.svg' %}" alt="arrow"></a>
-                        <h3 class="product-h3">Fishnet Chair</h3>
-                        <p class="product-p">Seat and back with upholstery made of cold cure foam</p>
-                    </div>
-                </div>
-                <div class="exclusive-item" style="background-image: url(../../../static/img/product-5-sm.jpg)">
-                    <div class="product-text">
-                        <a href="#" class="product-link"><img src="{% static 'img/arrow.svg' %}" alt="arrow"></a>
-                        <h3 class="product-h3">Fishnet Chair</h3>
-                        <p class="product-p">Seat and back with upholstery made of cold cure foam</p>
-                    </div>
-                </div>
+                {% endfor %}
+
             </div>
         </section>
         <section class="mobile-app" style="background-image: url(../../../static/img/back-img.jpg)">
