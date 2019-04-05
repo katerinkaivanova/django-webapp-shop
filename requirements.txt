@@ -1,0 +1,6 @@
+#pip install -r requirements.txt
+
+django==2.2
+ipython==7.4.0
+pillow==5.4.1
+pip-chill==0.1.8

@@ -286,14 +286,15 @@ body {
     font-size: 22px;
     font-weight: 700;
     color: #212121;
+    text-align: center;
 }
 
 .product-p {
     font-size: 14px;
     font-weight: 300;
     color: #6c6c6c;
-    text-align: center;
     letter-spacing: -0.4px;
+    text-align: center;
 }
 
 /* ------------------------PROMO PRODUCT------------------------*/
