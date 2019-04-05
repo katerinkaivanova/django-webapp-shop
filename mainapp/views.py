@@ -4,28 +4,19 @@ from django.shortcuts import render
 from .models import ProductCategory, Product
 
 links_menu = [
-    {'href': 'index', 'name': 'home'},
-    {'href': 'products', 'name': 'products'},
-    {'href': 'history', 'name': 'history'},
-    {'href': 'showroom', 'name': 'showroom'},
-    {'href': 'contact', 'name': 'contact'}
+    {'href': 'main', 'title': 'home'},
+    {'href': 'products:index', 'namespace': 'products', 'title': 'products'},
+    {'href': 'history', 'title': 'history'},
+    {'href': 'showroom', 'title': 'showroom'},
+    {'href': 'contact', 'title': 'contact'}
 ]
-
-#links_categories = [
-#    {'href': 'products_all', 'name': 'all'},
-#    {'href': 'products_home', 'name': 'home'},
-#    {'href': 'products_office', 'name': 'office'},
-#    {'href': 'products_modern', 'name': 'furniture'},
-#    {'href': 'products_classic', 'name': 'modern'},
-#    {'href': 'products_classic', 'name': 'classic'},
-#]
 
 def main_view(request):
     products = Product.objects.all()[:4]
     trending_products = Product.objects.all()[:6]
 
     my_context = {
-        'title': links_menu[0]['name'],
+        'title': links_menu[0]['title'],
         'links_menu': links_menu,
         'products': products,
         'trending_products': trending_products
@@ -38,7 +29,7 @@ def products_view(request):
     links_categories = ProductCategory.objects.all()
 
     my_context = {
-        'title': links_menu[1]['name'],
+        'title': links_menu[1]['title'],
         'links_menu': links_menu,
         'links_categories': links_categories,
         'products': products
@@ -47,22 +38,22 @@ def products_view(request):
 
 def history_view(request):
     my_context = {
-        'title': links_menu[2]['name'],
+        'title': links_menu[2]['title'],
         'links_menu': links_menu
     }
-    return render(request, 'index.html', my_context)
+    return render(request, 'history.html', my_context)
 
 
 def showroom_view(request):
     my_context = {
-        'title': links_menu[3]['name'],
+        'title': links_menu[3]['title'],
         'links_menu': links_menu
     }
-    return render(request, 'index.html', my_context)
+    return render(request, 'showroom.html', my_context)
 
 def contact_view(request):
     my_context = {
-        'title': links_menu[4]['name'],
+        'title': links_menu[4]['title'],
         'links_menu': links_menu
     }
     return render(request, 'contact.html', my_context)

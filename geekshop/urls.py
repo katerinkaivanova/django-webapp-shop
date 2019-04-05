@@ -19,14 +19,14 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.conf.urls import include
 
-from mainapp.views import main_view, products_view, history_view, showroom_view, contact_view
+import mainapp.views as mainapp
 
 urlpatterns = [
-    path('', main_view, name='index'),
-    path('history/', products_view, name='products'),
-    path('history/', history_view, name='history'),
-    path('showroom/', showroom_view, name='showroom'),
-    path('contact/', contact_view, name='contact'),
+    path('', mainapp.main_view, name='main'),
+    path('products/', include('mainapp.urls', namespace='products')),
+    path('history/', mainapp.history_view, name='history'),
+    path('showroom/', mainapp.showroom_view, name='showroom'),
+    path('contact/', mainapp.contact_view, name='contact'),
     path('admin/', admin.site.urls),
 ]
 

@@ -5,19 +5,45 @@
         <a class="logo" href="{% url links_menu.0.href %}"><img src="{% static 'img/logo.svg' %}" alt="logo"></a>
         <nav>
             <ul class="menu">
-
-                {% for link in links_menu %}
-                    <li>
-                        <a href="{% url link.href %}"
-                           class="menu-link
-                            {% if request.resolver_match.url_name == link.href %}
-                                menu-link-active
-                            {% endif %}">
-                            {{ link.name }}
-                        </a>
-                    </li>
-                {% endfor %}
-
+                <li>
+                    <a href="{% url links_menu.0.href %}"
+                       class="menu-link
+                        {% if request.resolver_match.url_name == links_menu.0.href %}
+                            menu-link-active
+                        {% endif %}">
+                        {{ links_menu.0.title }}
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url links_menu.1.href %}"
+                       class="menu-link
+                        {% if request.resolver_match.namespace == links_menu.1.namespace %}
+                            menu-link-active
+                        {% endif %}">
+                        {{ links_menu.1.title }}
+                    </a>
+                </li>
+                <li>
+                    <a href="#"
+                       class="menu-link">
+                        {{ links_menu.2.title }}
+                    </a>
+                </li>
+                <li>
+                    <a href="#"
+                       class="menu-link">
+                        {{ links_menu.3.title }}
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url links_menu.4.href %}"
+                       class="menu-link
+                        {% if request.resolver_match.url_name == links_menu.4.href %}
+                            menu-link-active
+                        {% endif %}">
+                        {{ links_menu.4.title }}
+                    </a>
+                </li>
                 <li><a href="#" class="menu-link"><img src="{% static 'img/search.svg' %}" alt="search"></a></li>
             </ul>
         </nav>
