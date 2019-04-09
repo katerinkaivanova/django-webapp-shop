@@ -6,45 +6,57 @@
         <nav>
             <ul class="menu">
                 <li>
-                    <a href="{% url links_menu.0.href %}"
-                       class="menu-link
+                    <a href="{% url links_menu.0.href %}" class="menu-link
                         {% if request.resolver_match.url_name == links_menu.0.href %}
                             menu-link-active
                         {% endif %}">
                         {{ links_menu.0.title }}
                     </a>
                 </li>
+
                 <li>
-                    <a href="{% url links_menu.1.href %}"
-                       class="menu-link
+                    <a href="{% url links_menu.1.href %}" class="menu-link
                         {% if request.resolver_match.namespace == links_menu.1.namespace %}
                             menu-link-active
                         {% endif %}">
                         {{ links_menu.1.title }}
                     </a>
                 </li>
+
+                <li><a href="#" class="menu-link"> {{ links_menu.2.title }} </a></li>
+                <li><a href="#" class="menu-link"> {{ links_menu.3.title }} </a></li>
+
                 <li>
-                    <a href="#"
-                       class="menu-link">
-                        {{ links_menu.2.title }}
-                    </a>
-                </li>
-                <li>
-                    <a href="#"
-                       class="menu-link">
-                        {{ links_menu.3.title }}
-                    </a>
-                </li>
-                <li>
-                    <a href="{% url links_menu.4.href %}"
-                       class="menu-link
+                    <a href="{% url links_menu.4.href %}" class="menu-link
                         {% if request.resolver_match.url_name == links_menu.4.href %}
                             menu-link-active
                         {% endif %}">
                         {{ links_menu.4.title }}
                     </a>
                 </li>
-                <li><a href="#" class="menu-link"><img src="{% static 'img/search.svg' %}" alt="search"></a></li>
+
+                <li>
+                    {% if user.is_authenticated %}
+                        <a href="{% url 'auth:logout' %}" class="menu-link"><i class="fas fa-sign-out-alt"></i></a>
+                    {% else %}
+                        <a href="{% url 'auth:login' %}" class="menu-link"><i class="fas fa-sign-in-alt"></i></a>
+                    {% endif %}
+                </li>
+
+
+                {% if user.is_authenticated %}
+                    <li>
+                        <a href="{% url 'auth:edit' %}" class="menu-link">
+                            {{ user.first_name|default:'User' }}
+                        </a>
+                    </li>
+                {% else %}
+                    <li>
+                        <a href="{% url 'auth:register' %}" class="menu-link">
+                            {{ 'register' }}
+                        </a>
+                    </li>
+                {% endif %}
             </ul>
         </nav>
         <img src="{% static 'img/menu-hamburger.png' %}" class="menu-mini" alt="menu-mini">

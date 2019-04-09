@@ -1,0 +1,34 @@
+[
+  {
+    "category": "Armchairs",
+    "name": "Red armchair",
+    "short_desc": "Red armchair",
+    "description": "Soft red armchair",
+    "price": 5500,
+    "quantity": 5
+  },
+  {
+    "category": "Armchairs",
+    "name": "White armchair",
+    "short_desc": "White armchair",
+    "description": "White plastic armchair",
+    "price": 5000,
+    "quantity": 3
+  },
+  {
+    "category": "Lamps",
+    "name": "Black lamp",
+    "short_desc": "Wall Light",
+    "description": "Black wall Light",
+    "price": 1500,
+    "quantity": 10
+  },
+  {
+    "category": "Lamps",
+    "name": "White lamp",
+    "short_desc": "White lamp",
+    "description": "White table lamp",
+    "price": 1650,
+    "quantity": 3
+  }
+]
