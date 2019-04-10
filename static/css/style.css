@@ -74,6 +74,11 @@ body {
     text-decoration: none;
 }
 
+.login-link {
+
+   text-align: center;
+}
+
 .menu-link:hover {
     color: #212121;
 }
