@@ -643,6 +643,11 @@ body {
     color: #212121;
 }
 
+.catalog-title-deal {
+    color: red;
+    font-weight: 400;
+}
+
 .catalog-products-top {
     padding-top: 69px;
     margin-bottom: 50px;

@@ -1,0 +1,99 @@
+{% extends 'mainapp/base.html' %}
+
+{% load static %}
+
+{% block title %}
+    {{ title|capfirst }}
+{% endblock %}
+
+{% block header %}
+    <header class="header">
+        <div class="container">
+            <div class="header-top padding-site">
+                {% include 'mainapp/includes/inc_menu.html' %}
+            </div>
+        </div>
+        <div class="header-bottom grey">
+            <div class="container">
+
+                {% include 'mainapp/includes/inc_categories_menu.html' %}
+
+                <!--
+                <ul class="category-menu padding-site">
+                    <li><a href="index.html" class="category-link category-link-active">All</a></li>
+                    <li><a href="catalog.html" class="category-link">Home</a></li>
+                    <li><a href="#" class="category-link">Office</a></li>
+                    <li><a href="#" class="category-link">Furniture</a></li>
+                    <li><a href="contacts.html" class="category-link">Modern</a></li>
+                    <li><a href="contacts.html" class="category-link">Classic</a></li>
+                </ul>
+                -->
+
+            </div>
+        </div>
+    </header>
+{{ links_menu.href.1}}
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <section class="item-detailed padding-site">
+            <div class="gallery">
+                <a href="/media/{{ product.image }}" class="gallery-link" target="_blank"><img src="/media/{{ product.image }}" alt="slider1"></a>
+                <div class="gallery-tab-control">
+                    <a class="gallery-tab-link" href="#"><img src="/media/{{ product.image }}" class="gallery-tab-img" alt="controll"></a>
+                    <a class="gallery-tab-link" href="#"><img src="/media/{{ product.image }}" class="gallery-tab-img" alt="controll11"></a>
+                    <a class="gallery-tab-link deactive" href="#"><img src="/media/{{ product.image }}" class="gallery-tab-img" alt="slider1"></a>
+                </div>
+            </div>
+            <div class="item-detailed-info">
+                <h2 class="item-detailed-h2">{{ product.name }}</h2>
+                <h4 class="item-detailed-h4">Hot Deal</h4>
+                <div class="price-box">
+
+                    <span class="price">{{ product.price }}</span>
+                    <span class="currency">rub</span>
+                    <!--
+                    <span class="currency">&#36;</span>
+                    <span class="price">36.7</span>
+                    <span class="slash">&#8260;</span>
+                    <span class="sq">sq</span>
+                    -->
+                </div>
+                <a href="{% url 'basket:add' product.pk %}" class="red-button">Order Us</a>
+                <div class="item-detailed-text">
+                    <p class="item-detailed-p">{{ product.description }}</p>
+                </div>
+            </div>
+        </section>
+        <section class="trending-products padding-site">
+            <div class="trending-top">
+                <h2 class="trending-title">Related Products</h2>
+                <a href="#" class="explore">explore all</a>
+            </div>
+            <div class="trending-box">
+                <div class="trending-item" style="background-image: url({{ product.image.url }}); background-size: contain">
+                    <div class="product-text">
+                        <a href="#" class="product-link"><img src="{% static 'img/arrow.svg' %}" alt="arrow"></a>
+                        <h3 class="product-h3">{{ product.name }}r</h3>
+                        <p class="product-p">{{ product.price }}</p>
+                    </div>
+                </div>
+                <div class="trending-item" style="background-image: url({{ product.image.url }}); background-size: contain">
+                    <div class="product-text">
+                        <a href="#" class="product-link"><img src="{% static 'img/arrow.svg' %}" alt="arrow"></a>
+                        <h3 class="product-h3">{{ product.name }}</h3>
+                        <p class="product-p">{{ product.price }}</p>
+                    </div>
+                </div>
+                <div class="trending-item" style="background-image: url({{ product.image.url }}); background-size: contain">
+                    <div class="product-text">
+                        <a href="#" class="product-link"><img src="{% static 'img/arrow.svg' %}" alt="arrow"></a>
+                        <h3 class="product-h3">{{ product.name }}</h3>
+                        <p class="product-p">{{ product.price }}</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+{% endblock %}

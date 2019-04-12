@@ -45,7 +45,7 @@
                 {% for product in products %}
                     <div class="catalog-item" style="background-image: url({{ product.image.url }}); background-size: contain">
                         <div class="product-text">
-                            <a href="{% url 'basket:add' product.pk %}" class="product-link"><img src="{% static 'img/arrow.svg' %}" alt="arrow"></a>
+                            <a href="{% url 'products:product' product.pk %}" class="product-link"><img src="{% static 'img/arrow.svg' %}" alt="arrow"></a>
                             <h3 class="product-h3">{{ product.name }}</h3>
                             <p class="product-p">{{ product.description }}</p>
                         </div>

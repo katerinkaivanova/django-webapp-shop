@@ -35,9 +35,29 @@
                     </a>
                 </li>
 
+                {% if user.is_authenticated %}
+                    <li>
+                        <a href="{% url 'auth:edit' %}" class="menu-link">
+                            {{ user.first_name|default:'User' }}
+                        </a>
+                    </li>
+                {% else %}
+                    <li>
+                        <a href="{% url 'auth:register' %}" class="menu-link">
+                            {{ 'sign up' }}
+                        </a>
+                    </li>
+                {% endif %}
+
 
                 <li>
-                    <a href="#" class="menu-link"><i class="fas fa-shopping-bag"></i>{{ basket|length }}</a>
+                    <a href="#" class="menu-link">
+                        <i class="fas fa-shopping-bag"></i>
+                        {% if basket %}
+                            {{ basket.0.total_cost|floatformat:0 }} rub
+                            ({{ basket.0.total_quantity }})
+                        {% endif %}
+                    </a>
                 </li>
 
                 <li>
@@ -48,20 +68,6 @@
                     {% endif %}
                 </li>
 
-
-                {% if user.is_authenticated %}
-                    <li>
-                        <a href="{% url 'auth:edit' %}" class="menu-link">
-                            {{ user.first_name|default:'User' }}
-                        </a>
-                    </li>
-                {% else %}
-                    <li>
-                        <a href="{% url 'auth:register' %}" class="menu-link">
-                            {{ 'register' }}
-                        </a>
-                    </li>
-                {% endif %}
             </ul>
         </nav>
         <img src="{% static 'img/menu-hamburger.png' %}" class="menu-mini" alt="menu-mini">
