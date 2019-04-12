@@ -3,10 +3,15 @@
 {% block categories %}
 
     <div class="catalog-tab-control">
+        <a href="{% url 'products:category' 0 %}"
+            class="tab-link {% if request.resolver_match.kwargs.pk == 0 %}tab-link-active{% endif %}">
+            all
+        </a>
         {% for link in links_categories %}
-
-            <a href="#" class="tab-link"> {{ link.name }} </a>
-
+            <a href="{% url 'products:category' link.pk %}"
+                class="tab-link {% if request.resolver_match.kwargs.pk|add:'0' == link.pk %}tab-link-active{% endif %}">
+                {{ link.name }}
+            </a>
         {% endfor %}
     </div>
 

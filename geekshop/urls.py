@@ -21,10 +21,12 @@ from django.conf.urls import include
 
 import mainapp.views as mainapp
 import authapp.views as authapp
+import basketapp.views as basketapp
 
 urlpatterns = [
     path('', mainapp.main_view, name='main'),
     path('auth/', include('authapp.urls', namespace='auth')),
+    path('basket/', include('basketapp.urls', namespace='basket')),
     path('products/', include('mainapp.urls', namespace='products')),
     path('history/', mainapp.history_view, name='history'),
     path('showroom/', mainapp.showroom_view, name='showroom'),
