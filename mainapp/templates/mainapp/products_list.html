@@ -10,12 +10,14 @@
     <header class="header grey">
         <div class="container">
             <div class="catalog padding-site">
+
                 {% include 'mainapp/includes/inc_menu.html' %}
-                <h1 class="catalog-title">Our products range</h1>
+                <h1 class="catalog-title">{{ category.name }}</h1>
+
             </div>
         </div>
     </header>
-    {{ links_menu.href.1}}
+    {{ links_menu.href.1 }}
 {% endblock %}
 
 
@@ -26,18 +28,21 @@
 
                 {% include 'mainapp/includes/inc_categories_menu.html' %}
 
+                <!--
+                <div class="catalog-tab-control">
+                    <a href="#" class="tab-link tab-link-active">All</a>
+                    <a href="#" class="tab-link tab-link-preactive">Home</a>
+                    <a href="#" class="tab-link tab-link-preactive">Office</a>
+                    <a href="#" class="tab-link">Furniture</a>
+                    <a href="#" class="tab-link">Modern</a>
+                    <a href="#" class="tab-link">Classic</a>
+                </div>
+                -->
+
             </div>
             <div class="catalog-box">
 
-                <div class="catalog-item" style="background-image: url({{ hot_product.image.url }}); background-size: contain">
-                    <div class="product-text">
-                        <a href="{% url 'products:product' hot_product.pk %}" class="product-link"><img src="{% static 'img/arrow.svg' %}" alt="arrow"></a>
-                        <h3 class="product-h3">{{ hot_product.name }}</h3>
-                        <p class="product-p">{{ hot_product.description }}</p>
-                    </div>
-                </div>
-
-                {% for product in same_products %}
+                {% for product in products %}
                     <div class="catalog-item" style="background-image: url({{ product.image.url }}); background-size: contain">
                         <div class="product-text">
                             <a href="{% url 'products:product' product.pk %}" class="product-link"><img src="{% static 'img/arrow.svg' %}" alt="arrow"></a>

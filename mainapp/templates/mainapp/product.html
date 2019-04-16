@@ -1,0 +1,71 @@
+{% extends 'mainapp/base.html' %}
+
+{% load static %}
+
+{% block title %}
+    {{ title|capfirst }}
+{% endblock %}
+
+{% block header %}
+    <header class="header">
+        <div class="container">
+            <div class="padding-site">
+                {% include 'mainapp/includes/inc_menu.html' %}
+            </div>
+        </div>
+        <div class="header-bottom grey">
+            <div class="container">
+                {% include 'mainapp/includes/inc_product_menu.html' %}
+            </div>
+        </div>
+    </header>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <section class="item-detailed padding-site">
+            <div class="gallery">
+                <a href="/media/{{ product.image }}" class="gallery-link" target="_blank"><img src="/media/{{ product.image }}" class="gallery-img" alt="product"></a>
+                <!--
+                <div class="gallery-tab-control">
+                    <a class="gallery-tab-link" href="#"><img src="img/controll.jpg" class="gallery-tab-img" alt="controll"></a>
+                    <a class="gallery-tab-link" href="#"><img src="img/controll11.png" class="gallery-tab-img" alt="controll11"></a>
+                    <a class="gallery-tab-link deactive" href="#"><img src="img/slider1.jpg" class="gallery-tab-img" alt="slider1"></a>
+                </div>
+                -->
+            </div>
+            <div class="item-detailed-info">
+                <h2 class="item-detailed-h2">{{ product.name }}</h2>
+                <h4 class="item-detailed-h4">Hot Deal</h4>
+                <div class="price-box">
+                    <span class="currency">&#36;</span>
+                    <span class="price">{{ product.price }}</span>
+                    <span class="slash">&#8260;</span>
+                    <span class="sq">sq</span>
+                </div>
+                <a href="{% url 'basket:add' product.pk %}" class="red-button">Order Us</a>
+                <div class="item-detailed-text">
+                    <p class="item-detailed-p">{{ product.description }}</p>
+                </div>
+            </div>
+        </section>
+        <section class="trending-products padding-site">
+            <div class="trending-top">
+                <h2 class="trending-title">Related Products</h2>
+                <a href="#" class="explore">explore all</a>
+            </div>
+            <div class="trending-box">
+
+                {% for product in same_products %}
+                    <div class="trending-item" style="background-image: url({{ product.image.url }}); background-size: contain">
+                        <div class="product-text">
+                            <a href="{% url 'products:product' product.pk %}" class="product-link"><img src="{% static 'img/arrow.svg' %}" alt="arrow"></a>
+                            <h3 class="product-h3">{{ product.name }}</h3>
+                            <p class="product-p">{{ product.description }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
+    </div>
+{% endblock %}

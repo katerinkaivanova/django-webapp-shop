@@ -200,8 +200,8 @@ body {
 
 .featured-tab-control .tab-link {
     display: block;
-    padding-left: 8px;
-    padding-right: 23px;
+    padding-left: 10px;
+    padding-right: 10px;
     padding-bottom: 10px;
     font-size: 36px;
     font-weight: 700;
@@ -643,6 +643,11 @@ body {
     color: #212121;
 }
 
+.catalog-title-deal {
+    color: red;
+    font-weight: 400;
+}
+
 .catalog-products-top {
     padding-top: 69px;
     margin-bottom: 50px;
@@ -768,6 +773,11 @@ body {
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
 }
 
+.gallery-img {
+    width: 570px;
+    height: 570px;
+}
+
 .gallery-tab-img {
     width: 70px;
     height: 70px;
@@ -819,6 +829,10 @@ body {
 
 .slash {
     font-size: 48px;
+}
+
+.item-detailed-text {
+    width: 550px;
 }
 
 .item-detailed-p {

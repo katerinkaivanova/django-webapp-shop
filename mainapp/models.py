@@ -1,11 +1,5 @@
 from django.db import models
 
-# Create your models here.
-
-from django.db import models
-
-# Create your models here.
-
 class ProductCategory(models.Model):
     class Meta:
         verbose_name = 'Категория'
@@ -31,4 +25,4 @@ class Product(models.Model):
     quantity = models.PositiveIntegerField(verbose_name='Количество на складе', default=0)
 
     def __str__(self):
-        return f"{self.name} ({self.category.name})"
+        return f'{self.name} ({self.category.name})'
