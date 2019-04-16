@@ -1,0 +1,18 @@
+{% load static %}
+
+{% block categories %}
+
+    <div class="category-menu padding-site">
+        <a href="{% url 'products:category' 0 %}"
+            class="category-link {% if request.resolver_match.kwargs.pk == 0 %}category-link-active{% endif %}">
+            all
+        </a>
+        {% for link in links_categories %}
+            <a href="{% url 'products:category' link.pk %}"
+                class="category-link {% if request.resolver_match.kwargs.pk|add:'0' == link.pk %}category-link-active{% endif %}">
+                {{ link.name }}
+            </a>
+        {% endfor %}
+    </div>
+
+{% endblock %}

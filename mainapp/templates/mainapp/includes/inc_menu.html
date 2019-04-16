@@ -51,7 +51,7 @@
 
 
                 <li>
-                    <a href="#" class="menu-link">
+                    <a href="{% url 'basket:view' %}" class="menu-link">
                         <i class="fas fa-shopping-bag"></i>
                         {% if basket %}
                             {{ basket.0.total_cost|floatformat:0 }} rub

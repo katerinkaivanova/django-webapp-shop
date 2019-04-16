@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, HttpResponseRedirect
 from mainapp.models import ProductCategory, Product
 from basketapp.models import Basket
 
@@ -93,16 +93,19 @@ def products_view(request, pk=None):
 def product_view(request, pk):
 
     links_categories = ProductCategory.objects.all()
+    same_products = get_same_products(get_object_or_404(Product, pk=pk))
 
     my_context = {
         'title': links_menu[1]['title'],
         'links_menu': links_menu,
         'links_categories': links_categories,
         'product': get_object_or_404(Product, pk=pk),
+        'same_products': same_products,
         'basket': get_basket(request.user),
     }
 
     return render(request, 'mainapp/product.html', my_context)
+
 
 def history_view(request):
 

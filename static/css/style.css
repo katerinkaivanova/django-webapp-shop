@@ -773,6 +773,11 @@ body {
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
 }
 
+.gallery-img {
+    width: 570px;
+    height: 570px;
+}
+
 .gallery-tab-img {
     width: 70px;
     height: 70px;
@@ -824,6 +829,10 @@ body {
 
 .slash {
     font-size: 48px;
+}
+
+.item-detailed-text {
+    width: 550px;
 }
 
 .item-detailed-p {
