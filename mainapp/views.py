@@ -10,7 +10,8 @@ links_menu = [
     {'href': 'products:index', 'namespace': 'products', 'title': 'products'},
     {'href': 'history', 'title': 'history'},
     {'href': 'showroom', 'title': 'showroom'},
-    {'href': 'contact', 'title': 'contact'}
+    {'href': 'contact', 'title': 'contact'},
+    {'href': 'admin_custom:categories', 'namespace': 'admin_custom', 'title': 'admin'}
 ]
 
 

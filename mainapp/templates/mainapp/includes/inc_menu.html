@@ -35,6 +35,15 @@
                     </a>
                 </li>
 
+                {% if user.is_superuser %}
+                    <li>
+                        <a href="{% url links_menu.5.href %}" class="menu-link">
+                            {{ links_menu.5.title }}
+                        </a>
+                    </li>
+                {% endif %}
+
+
                 {% if user.is_authenticated %}
                     <li>
                         <a href="{% url 'auth:edit' %}" class="menu-link">
