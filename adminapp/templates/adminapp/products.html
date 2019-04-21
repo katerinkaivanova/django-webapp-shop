@@ -5,40 +5,40 @@
 {% block content %}
     <div class="products_list">
         <button class="new_product">
-            <a href={% url 'admin_custom:product_create' category.pk %}>
-                новый продукт
+            <a href={% url 'admin_custom:product_create' category %}>
+                new product
             </a>
         </button>
 
-        {% for object in objects %}
+        {% for object in object_list %}
             <div class="product_record">
-                <img
-                        src="/media/{{ object.image|default:'products_images/default.jpg' }}"
-                        alt="{{ object.name }}">
+                <img width="200" height="200"
+                     src="/media/{{ object.image|default:'products_images/default.jpg' }}"
+                     alt="{{ object.name }}">
                 <div class="product_name">
                     {{ object.name|title }}
                 </div>
                 <div class="product_actions">
                     <button>
                         <a href={% url 'admin_custom:product_read' object.pk %}>
-                            подробнее
+                            view
                         </a>
                     </button>
                     <button>
                         <a href={% url 'admin_custom:product_update' object.pk %}>
-                            редактировать
+                            edit
                         </a>
                     </button>
                     <button>
                         <a href={% url 'admin_custom:product_delete' object.pk %}>
-                            удалить
+                            delete
                         </a>
                     </button>
                 </div>
                 <div class="summary">
-                    <b>цена</b>
+                    <b>price</b>
                     <p>{{ object.price }} руб</p>
-                    <b>количество</b>
+                    <b>quantity</b>
                     <p>{{ object.quantity }}</p>
                 </div>
                 <div class="product_desc">

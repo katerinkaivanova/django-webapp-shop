@@ -3,7 +3,8 @@ from django.shortcuts import render, get_object_or_404, HttpResponseRedirect
 from django.urls import reverse, reverse_lazy
 from django.contrib.auth.decorators import user_passes_test
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
-#from django.utils.decorators import method_decorator
+from django.views.generic.detail import DetailView
+from django.utils.decorators import method_decorator
 
 from authapp.models import ShopUser
 from mainapp.models import ProductCategory, Product
@@ -15,22 +16,23 @@ from adminapp.forms import ShopUserAdminEditForm
 # user views
 
 
-class IsSuperUserView(UserPassesTestMixin):
+class IsSuperUserMixin(UserPassesTestMixin):
     def test_func(self):
         return self.request.user.is_superuser
 
 
-class ShopUserListView(IsSuperUserView, ListView):
+class ShopUserListView(IsSuperUserMixin, ListView):
     model = ShopUser
     template_name = 'adminapp/users.html'
 
     def get_context_data(self, **kwargs):
         my_context = super(ShopUserListView, self).get_context_data(**kwargs)
         my_context['title'] = 'Users list'
+
         return my_context
 
 
-class ShopUserCreateView(IsSuperUserView, CreateView):
+class ShopUserCreateView(IsSuperUserMixin, CreateView):
     model = ShopUser
     template_name = 'adminapp/user_update.html'
     fields = '__all__'
@@ -39,10 +41,11 @@ class ShopUserCreateView(IsSuperUserView, CreateView):
     def get_context_data(self, **kwargs):
         my_context = super(ShopUserCreateView, self).get_context_data(**kwargs)
         my_context['title'] = 'User create'
+
         return my_context
 
 
-class ShopUserUpdateView(IsSuperUserView, UpdateView):
+class ShopUserUpdateView(IsSuperUserMixin, UpdateView):
     model = ShopUser
     template_name = 'adminapp/user_update.html'
     fields = '__all__'
@@ -51,44 +54,44 @@ class ShopUserUpdateView(IsSuperUserView, UpdateView):
     def get_context_data(self, **kwargs):
         my_context = super(ShopUserUpdateView, self).get_context_data(**kwargs)
         my_context['title'] = 'User update'
+
         return my_context
 
 
-class ShopUserDeleteView(IsSuperUserView, DeleteView):
+class ShopUserDeleteView(IsSuperUserMixin, DeleteView):
     model = ShopUser
-    template_name = 'adminapp/user_update.html'
+    template_name = 'adminapp/user_delete.html'
     success_url = reverse_lazy('admin_custom:users')
 
     def get_context_data(self, **kwargs):
         my_context = super(ShopUserDeleteView, self).get_context_data(**kwargs)
         my_context['title'] = 'User delete'
+
         return my_context
 
     def delete(self, request, *args, **kwargs):
         user = get_object_or_404(ShopUser, pk=kwargs['pk'])
         user.is_active = False
         user.save()
+
         return HttpResponseRedirect(self.success_url)
 
 
 # category views
 
 
-class ProductCategoryListView(IsSuperUserView, ListView):
+class ProductCategoryListView(IsSuperUserMixin, ListView):
     model = ProductCategory
     template_name = 'adminapp/categories.html'
 
     def get_context_data(self, **kwargs):
         my_context = super(ProductCategoryListView, self).get_context_data(**kwargs)
         my_context['title'] = ' Categories List'
+
         return my_context
 
-    #@method_decorator(user_passes_test(lambda u: u.is_superuser))
-    #def dispatch(self, *args, **kwargs):
-    #    return super(ProductCategoryListView, self).dispatch(*args, **kwargs)
 
-
-class ProductCategoryCreateView(IsSuperUserView, CreateView):
+class ProductCategoryCreateView(IsSuperUserMixin, CreateView):
     model = ProductCategory
     template_name = 'adminapp/category_update.html'
     success_url = reverse_lazy('admin_custom:categories')
@@ -97,10 +100,11 @@ class ProductCategoryCreateView(IsSuperUserView, CreateView):
     def get_context_data(self, **kwargs):
         my_context = super(ProductCategoryCreateView, self).get_context_data(**kwargs)
         my_context['title'] = 'Create category'
+
         return my_context
 
 
-class ProductCategoryUpdateView(IsSuperUserView, UpdateView):
+class ProductCategoryUpdateView(IsSuperUserMixin, UpdateView):
     model = ProductCategory
     template_name = 'adminapp/category_update.html'
     success_url = reverse_lazy('admin_custom:categories')
@@ -109,54 +113,102 @@ class ProductCategoryUpdateView(IsSuperUserView, UpdateView):
     def get_context_data(self, **kwargs):
         my_context = super(ProductCategoryUpdateView, self).get_context_data(**kwargs)
         my_context['title'] = 'Update category'
+
         return my_context
 
 
-class ProductCategoryDeleteView(IsSuperUserView, DeleteView):
+class ProductCategoryDeleteView(IsSuperUserMixin, DeleteView):
     model = ProductCategory
-    template_name = 'adminapp/category_update.html'
+    template_name = 'adminapp/category_delete.html'
     success_url = reverse_lazy('admin_custom:categories')
 
     def get_context_data(self, **kwargs):
         my_context = super(ProductCategoryDeleteView, self).get_context_data(**kwargs)
         my_context['title'] = 'Delete category'
+
         return my_context
+
+    def delete(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        self.object.is_active = False
+        self.object.save()
+
+        return HttpResponseRedirect(self.get_success_url())
 
 
 # product views
 
 
-@user_passes_test(lambda u: u.is_superuser)
-def products_view(request, pk):
-    title = 'админка/продукт'
+class ProductListView(IsSuperUserMixin, ListView):
+    model = ProductCategory
+    template_name = "adminapp/products.html"
 
-    category = get_object_or_404(ProductCategory, pk=pk)
-    products_list = Product.objects.filter(category__pk=pk).order_by('name')
+    def get_context_data(self, *args, **kwargs):
+        my_context = super(ProductListView, self).get_context_data(*args, **kwargs)
+        my_context['category'] = self.kwargs['pk']
+        my_context['name'] = ProductCategory.objects.get(pk=self.kwargs['pk'])
+        my_context['object_list'] = Product.objects.filter(category=self.kwargs['pk'])
+        my_context['title'] = 'Delete category'
 
-    my_context = {
-        'title': title,
-        'category': category,
-        'objects': products_list,
-    }
-
-    return render(request, 'adminapp/products.html', my_context)
+        return my_context
 
 
-@user_passes_test(lambda u: u.is_superuser)
-def product_create_view(request, pk):
-    pass
+class ProductDetailView(DetailView):
+    model = Product
+    template_name = 'adminapp/product_read.html'
+    success_url = reverse_lazy('adminapp:products')
 
 
-@user_passes_test(lambda u: u.is_superuser)
-def product_read_view(request, pk):
-    pass
+    def get_context_data(self, **kwargs):
+        my_context = super(ProductDetailView, self).get_context_data(**kwargs)
+        my_context['title'] = 'Product details'
+
+        return my_context
 
 
-@user_passes_test(lambda u: u.is_superuser)
-def product_update_view(request, pk):
-    pass
+class ProductCreateView(CreateView):
+    model = Product
+    fields = '__all__'
+    template_name = 'adminapp/product_update.html'
+    success_url = reverse_lazy('adminapp:products')
+
+    def get_context_data(self, **kwargs):
+        my_context = super(ProductCreateView, self).get_context_data(**kwargs)
+        my_context['title'] = 'New product'
+        return my_context
 
 
-@user_passes_test(lambda u: u.is_superuser)
-def product_delete_view(request, pk):
-    pass
+class ProductUpdateView(IsSuperUserMixin, UpdateView):
+    model = Product
+    fields = '__all__'
+    template_name = 'adminapp/product_update.html'
+
+    def get_success_url(self):
+        return reverse_lazy('adminapp:product_update', kwargs={'pk': self.kwargs.get('pk')})
+
+    def get_context_data(self, **kwargs):
+        my_context = super(ProductUpdateView, self).get_context_data(**kwargs)
+        my_context['title'] = f"Edit product {my_context.get('object').name}"
+        return my_context
+
+
+class ProductDeleteView(IsSuperUserMixin, DeleteView):
+    model = Product
+    template_name = 'adminapp/product_delete.html'
+    success_url = reverse_lazy('adminapp:categories')
+
+    def get_context_data(self, **kwargs):
+        my_context = super(ProductDeleteView, self).get_context_data(**kwargs)
+        my_context['title'] = f"Delete product {my_context.get('object').name}"
+
+        return my_context
+
+    def delete(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        self.object.is_active = False
+        self.object.save()
+
+        return HttpResponseRedirect(self.get_success_url())
+
+
+
