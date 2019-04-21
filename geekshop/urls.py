@@ -8,6 +8,9 @@ import mainapp.views as mainapp
 import authapp.views as authapp
 import basketapp.views as basketapp
 
+if settings.DEBUG:
+    import debug_toolbar
+
 urlpatterns = [
     path('', mainapp.main_view, name='main'),
     path('auth/', include('authapp.urls', namespace='auth')),
@@ -18,6 +21,8 @@ urlpatterns = [
     path('contact/', mainapp.contact_view, name='contact'),
     path('admin_custom/', include('adminapp.urls', namespace='admin_custom')),
     path('admin/', admin.site.urls),
+    path('social/', include('social_django.urls', namespace='social')),
+    path('__debug__/', include(debug_toolbar.urls)),
 ]
 
 if settings.DEBUG:
