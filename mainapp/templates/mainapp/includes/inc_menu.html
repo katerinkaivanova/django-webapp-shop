@@ -1,4 +1,5 @@
 {% load static %}
+{% load custom_tags %}
 
 {% block menu %}
     <div class="header-top">
@@ -35,6 +36,15 @@
                     </a>
                 </li>
 
+                {% if user.is_superuser %}
+                    <li>
+                        <a href="{% url links_menu.5.href %}" class="menu-link">
+                            {{ links_menu.5.title }}
+                        </a>
+                    </li>
+                {% endif %}
+
+
                 {% if user.is_authenticated %}
                     <li>
                         <a href="{% url 'auth:edit' %}" class="menu-link">
@@ -54,8 +64,8 @@
                     <a href="{% url 'basket:view' %}" class="menu-link">
                         <i class="fas fa-shopping-bag"></i>
                         {% if basket %}
-                            {{ basket.0.total_cost|floatformat:0 }} rub
-                            ({{ basket.0.total_quantity }})
+                            {{ request.user|basket_total_cost|floatformat:0 }} rub
+                            ({{ request.user|basket_total_items }})
                         {% endif %}
                     </a>
                 </li>

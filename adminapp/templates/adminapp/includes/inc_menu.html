@@ -1,0 +1,26 @@
+<ul class="menu">
+    <li>
+        <a href="{% url 'main' %}">
+            geekshop
+        </a>
+    </li>
+    <li>
+        <a href="{% url 'admin_custom:users' %}"
+           class="{% if request.resolver_match.url_name == 'users' %}
+                active
+              {% endif %}">
+            users
+        </a>
+    </li>
+    <li>
+        <a href="{% url 'admin_custom:categories' %}"
+           class="{% if request.resolver_match.url_name == 'categories' or category.name %}
+                active
+              {% endif %}">
+            categories
+            {% if category %}
+                :<span>{{ name }}</span>
+            {% endif %}
+        </a>
+    </li>
+</ul>
