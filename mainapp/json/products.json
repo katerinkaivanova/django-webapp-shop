@@ -4,31 +4,127 @@
     "name": "Red armchair",
     "short_desc": "Red armchair",
     "description": "Soft red armchair",
-    "price": 5500,
-    "quantity": 5
+    "price": 500,
+    "quantity": 1
   },
   {
     "category": "Armchairs",
     "name": "White armchair",
     "short_desc": "White armchair",
     "description": "White plastic armchair",
-    "price": 5000,
+    "price": 300,
+    "quantity": 2
+  },
+  {
+    "category": "Armchairs",
+    "name": "Blue armchair",
+    "short_desc": "Blue armchairs",
+    "description": "Soft blue armchairs",
+    "price": 900,
+    "quantity": 3
+  },
+  {
+    "category": "Armchairs",
+    "name": "Brown armchair",
+    "short_desc": "Brown armchair",
+    "description": "Wood and leather chair",
+    "price": 1200,
+    "quantity": 4
+  },
+  {
+    "category": "Lamps",
+    "name": "Black wall lamp",
+    "short_desc": "Wall light",
+    "description": "Black glass wall light",
+    "price": 100,
+    "quantity": 1
+  },
+  {
+    "category": "Lamps",
+    "name": "White table lamp",
+    "short_desc": "Table light",
+    "description": "White glass table light",
+    "price": 150,
+    "quantity": 2
+  },
+  {
+    "category": "Lamps",
+    "name": "Black ceiling lamp",
+    "short_desc": "Ceiling light",
+    "description": "White plastic ceiling light",
+    "price": 200,
     "quantity": 3
   },
   {
     "category": "Lamps",
-    "name": "Black lamp",
-    "short_desc": "Wall Light",
-    "description": "Black wall Light",
-    "price": 1500,
-    "quantity": 10
+    "name": "Marble ceiling lamp",
+    "short_desc": "Ceiling light",
+    "description": "Marble plastic ceiling light",
+    "price": 250,
+    "quantity": 4
   },
   {
     "category": "Lamps",
-    "name": "White lamp",
-    "short_desc": "White lamp",
-    "description": "White table lamp",
-    "price": 1650,
+    "name": "Black table lamp",
+    "short_desc": "Table light",
+    "description": "Black metal table light",
+    "price": 300,
+    "quantity": 5
+  },
+  {
+    "category": "Lamps",
+    "name": "Black wall lamp",
+    "short_desc": "Wall light",
+    "description": "Black metal wall light",
+    "price": 350,
+    "quantity": 6
+  },
+  {
+    "category": "Pillows",
+    "name": "Red pillow",
+    "short_desc": "Red sofa pillow",
+    "description": "Red soft sofa pillow",
+    "price": 400,
+    "quantity": 7
+  },
+  {
+    "category": "Sofas",
+    "name": "Gray sofa",
+    "short_desc": "Gray orthopedic sofa",
+    "description": "Gray soft orthopedic sofa",
+    "price": 5000,
+    "quantity": 2
+  },
+  {
+    "category": "Decor",
+    "name": "White jag",
+    "short_desc": "Ceramic white jag",
+    "description": "Beautiful ceramic white jag",
+    "price": 300,
+    "quantity": 2
+  },
+  {
+    "category": "Decor",
+    "name": "Wall Clock",
+    "short_desc": "Mechanical wall clock",
+    "description": "Mechanical wall clock",
+    "price": 310,
+    "quantity": 1
+  },
+  {
+    "category": "Decor",
+    "name": "Black mortar",
+    "short_desc": "Ceramic black mortar",
+    "description": "Ceramic black mortar",
+    "price": 290,
+    "quantity": 3
+  },
+  {
+    "category": "White vase",
+    "name": "Clay vase",
+    "short_desc": "White clay vase",
+    "description": "White clay vase",
+    "price": 290,
     "quantity": 3
   }
 ]

@@ -1,7 +1,11 @@
 from django.shortcuts import render, HttpResponseRedirect
-from django.urls import reverse
 from django.contrib import auth
+from django.urls import reverse
+from django.core.mail import send_mail
+from django.conf import settings
+
 from authapp.forms import ShopUserRegisterForm, ShopUserEditForm, ShopUserLoginForm
+from authapp.models import ShopUser
 
 
 def register_view(request):
@@ -12,12 +16,21 @@ def register_view(request):
 
         if register_form.is_valid():
             new_user = register_form.save()
-            auth.login(request, new_user)
-            return HttpResponseRedirect(reverse('main'))
+            # auth.login(request, new_user, backend='django.contrib.auth.backends.ModelBackend')
+            if send_verify_mail(new_user):
+                print('Message sent successfully')
+                return HttpResponseRedirect(reverse('main'))
+            else:
+                print('Sending error')
+                return HttpResponseRedirect(reverse('auth:login'))
     else:
         register_form = ShopUserRegisterForm()
 
-    my_context = {'title': title, 'register_form': register_form}
+    my_context = {
+        'title': title,
+        'register_form': register_form
+    }
+
     return render(request, 'authapp/register.html', my_context)
 
 
@@ -32,9 +45,12 @@ def edit_view(request):
     else:
         edit_form = ShopUserEditForm(instance=request.user)
 
-    context = {'title': title, 'edit_form': edit_form}
+    my_context = {
+        'title': title,
+        'edit_form': edit_form
+    }
 
-    return render(request, 'authapp/edit.html', context)
+    return render(request, 'authapp/edit.html', my_context)
 
 
 def login_view(request):
@@ -68,3 +84,32 @@ def login_view(request):
 def logout_view(request):
     auth.logout(request)
     return HttpResponseRedirect(reverse('main'))
+
+
+def send_verify_mail(user):
+    title = f'Account Verification {user.username}'
+
+    verify_link = reverse('auth:verify', kwargs={
+        'email': user.email,
+        'activation_key': user.activation_key,
+    })
+
+    message = f'To confirm your account {user.username} on the {settings.DOMAIN_NAME} \
+                follow this link: \n{settings.DOMAIN_NAME}{verify_link}'
+
+    return send_mail(title, message, settings.EMAIL_HOST_USER, [user.email], fail_silently=False)
+
+
+def verify_view(request, email, activation_key):
+    try:
+        user = ShopUser.objects.get(email=email)
+        if user.activation_key == activation_key and user.is_activation_key_valid():
+            user.is_active = True
+            user.save()
+            auth.login(request, user, backend='django.contrib.auth.backends.ModelBackend')
+        else:
+            print(f'Error activation user: {user}')
+        return render(request, 'authapp/verification.html')
+    except Exception as e:
+        print(f'Error activation user : {e.args}')
+        return HttpResponseRedirect(reverse('main'))

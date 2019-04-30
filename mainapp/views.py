@@ -1,6 +1,5 @@
 from django.shortcuts import render, get_object_or_404, HttpResponseRedirect
 from mainapp.models import ProductCategory, Product
-from basketapp.models import Basket
 
 import random
 
@@ -13,13 +12,6 @@ links_menu = [
     {'href': 'contact', 'title': 'contact'},
     {'href': 'admin_custom:categories', 'namespace': 'admin_custom', 'title': 'admin'}
 ]
-
-
-def get_basket(user):
-    if user.is_authenticated:
-        return Basket.objects.filter(user=user)
-    else:
-        return []
 
 
 def get_hot_product():
@@ -39,14 +31,12 @@ def main_view(request):
 
     products = Product.objects.all()[:4]
     trending_products = Product.objects.all()[:6]
-    basket = get_basket(request.user)
 
     my_context = {
         'title': links_menu[0]['title'],
         'links_menu': links_menu,
         'products': products,
         'trending_products': trending_products,
-        'basket': basket
     }
     return render(request, 'index.html', my_context)
 
@@ -54,7 +44,6 @@ def main_view(request):
 def products_view(request, pk=None):
 
     links_categories = ProductCategory.objects.all()
-    basket = get_basket(request.user)
 
     if pk is not None:
         if pk == 0:
@@ -70,7 +59,6 @@ def products_view(request, pk=None):
             'links_categories': links_categories,
             'category': category,
             'products': products,
-            'basket': basket
         }
 
         return render(request, 'mainapp/products_list.html', my_context)
@@ -85,7 +73,6 @@ def products_view(request, pk=None):
             'links_categories': links_categories,
             'hot_product': hot_product,
             'same_products': same_products,
-            'basket': basket,
         }
 
         return render(request, 'mainapp/products.html', my_context)
@@ -102,7 +89,6 @@ def product_view(request, pk):
         'links_categories': links_categories,
         'product': get_object_or_404(Product, pk=pk),
         'same_products': same_products,
-        'basket': get_basket(request.user),
     }
 
     return render(request, 'mainapp/product.html', my_context)
@@ -130,12 +116,9 @@ def showroom_view(request):
 
 def contact_view(request):
 
-    basket = get_basket(request.user)
-
     my_context = {
         'title': links_menu[4]['title'],
         'links_menu': links_menu,
-        'basket': basket
     }
 
     return render(request, 'contact.html', my_context)

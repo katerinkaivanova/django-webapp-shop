@@ -9,4 +9,5 @@ urlpatterns = [
     path('logout/', authapp.logout_view, name='logout'),
     path('register/', authapp.register_view, name='register'),
     path('edit/', authapp.edit_view, name='edit'),
+    path('verify/<email>/<activation_key>/', authapp.verify_view, name='verify'),
 ]
