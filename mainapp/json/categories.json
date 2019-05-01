@@ -6,5 +6,21 @@
   {
     "name": "Lamps",
     "description": "Electric lights"
+  },
+  {
+    "name": "Pillows",
+    "description": "Multi-colored pillows"
+  },
+  {
+    "name": "Sofas",
+    "description": "Orthopedic sofas"
+  },
+  {
+    "name": "Decor",
+    "description": "Modern decor"
+  },
+  {
+    "name": "Chairs",
+    "description": "Fashion chairs"
   }
 ]

@@ -1,0 +1,17 @@
+{% extends 'authapp/base.html' %}
+{% load static %}
+
+{% block content %}
+
+    {% if user.is_authenticated %}
+        <h3>Congratulations!</h3>
+        <br>
+        <h4>User {{ user.username }} is verified!</h4>
+    {% else %}
+        <h3>Verification failed.</h3>
+    {% endif %}
+
+    <br>
+    <a href="{% url 'main' %}" class="btn btn-primary form-control">Geekshop</a>
+
+{% endblock %}

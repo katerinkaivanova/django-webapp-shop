@@ -44,7 +44,6 @@
                     </li>
                 {% endif %}
 
-
                 {% if user.is_authenticated %}
                     <li>
                         <a href="{% url 'auth:edit' %}" class="menu-link">
@@ -59,13 +58,18 @@
                     </li>
                 {% endif %}
 
-
                 <li>
                     <a href="{% url 'basket:view' %}" class="menu-link">
                         <i class="fas fa-shopping-bag"></i>
                         {% if basket %}
-                            {{ request.user|basket_total_cost|floatformat:0 }} rub
+                            <!-- через templatetags -->
+                            <!--
+                            {{ request.user|basket_total_cost|floatformat:0 }}&#36;
                             ({{ request.user|basket_total_items }})
+                            -->
+                            <!-- через context processor -->
+                            {{ basket.0.total_cost|floatformat:0 }}&#36;
+                            ({{ basket.0.total_quantity }})
                         {% endif %}
                     </a>
                 </li>
