@@ -50,12 +50,6 @@
                             {{ user.first_name|default:'User' }}
                         </a>
                     </li>
-                {% else %}
-                    <li>
-                        <a href="{% url 'auth:register' %}" class="menu-link">
-                            {{ 'sign up' }}
-                        </a>
-                    </li>
                 {% endif %}
 
                 <li>

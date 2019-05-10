@@ -2,22 +2,35 @@
 {% load static %}
 
 {% block content %}
-    <form class="form-horizontal" action="{% url 'auth:login' %}" method="post">
-        {% csrf_token %}
-            {% if next %}
-                <input type="hidden" name="next" value="{{ next }}">
-            {% endif %}
-        {{ login_form.as_p }}
-        <br>
-        <input class="form-control" type="submit" value="войти">
-    </form>
 
-    <!--для авторизации через VK-->
-    <!--http://127.0.0.1:8000/social/login/vk-oauth2-->
+    <div class="d-flex justify-content-center align-items-center container">
+        <div class="row ">
+            <form action="{% url 'auth:login' %}" method="post">
+                <div class="form-group">
+                    {% csrf_token %}
+                    {% if next %}
+                        <input type="hidden" name="next" value="{{ next }}">
+                    {% endif %}
+                    {{ login_form.as_p }}
+                </div>
 
-    <button class="btn btn-round form-control last">
-        <a href="{% url 'main' %}" class="">
-            geekshop
-        </a>
-    </button>
+                <div class="form-group">
+                    <input class="btn-primary form-control" type="submit" value="Submit">
+                </div>
+
+                <div class="form-group">
+                    <a href="{% url 'social:begin' 'vk-oauth2' %}?next=/" class="btn btn-link form-control">
+                        ВКонтакте
+                    </a>
+                    <a href="{% url 'auth:register' %}" class="btn btn-link form-control">
+                        Register
+                    </a>
+                    <a href="{% url 'main' %}" class="btn btn-link form-control last">
+                        Home
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+
 {% endblock %}
