@@ -3,11 +3,14 @@
 
 {% block menu %}
     <div class="header-top">
-        <a class="logo" href="{% url links_menu.0.href %}"><img src="{% static 'img/logo.svg' %}" alt="logo"></a>
+        <a class="logo" href="{% url 'main' %}"><img src="{% static 'img/logo.svg' %}" alt="logo"></a>
         <nav>
             <ul class="menu">
+
+                <!-- Geekshop -->
+
                 <li>
-                    <a href="{% url links_menu.0.href %}" class="menu-link
+                    <a href="{% url 'main' %}" class="menu-link
                         {% if request.resolver_match.url_name == links_menu.0.href %}
                             menu-link-active
                         {% endif %}">
@@ -16,7 +19,7 @@
                 </li>
 
                 <li>
-                    <a href="{% url links_menu.1.href %}" class="menu-link
+                    <a href="{% url 'products:index' %}" class="menu-link
                         {% if request.resolver_match.namespace == links_menu.1.namespace %}
                             menu-link-active
                         {% endif %}">
@@ -28,7 +31,7 @@
                 <li><a href="#" class="menu-link"> {{ links_menu.3.title }} </a></li>
 
                 <li>
-                    <a href="{% url links_menu.4.href %}" class="menu-link
+                    <a href="{% url 'contact' %}" class="menu-link
                         {% if request.resolver_match.url_name == links_menu.4.href %}
                             menu-link-active
                         {% endif %}">
@@ -36,21 +39,39 @@
                     </a>
                 </li>
 
+                <!-- Custom admin -->
+
                 {% if user.is_superuser %}
                     <li>
-                        <a href="{% url links_menu.5.href %}" class="menu-link">
+                        <a href="{% url 'admin_custom:categories' %}" class="menu-link">
                             {{ links_menu.5.title }}
                         </a>
                     </li>
                 {% endif %}
 
+                <!-- User profile -->
+
                 {% if user.is_authenticated %}
-                    <li>
-                        <a href="{% url 'auth:edit' %}" class="menu-link">
+                    <li class="dropdown">
+                        <a class="menu-link" href="">
                             {{ user.first_name|default:'User' }}
                         </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="{% url 'auth:edit' %}" class="menu-link">
+                                    Account
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{% url 'orders:orders_list' %}" class="menu-link">
+                                    Orders
+                                </a>
+                            </li>
+                        </ul>
                     </li>
                 {% endif %}
+
+                <!-- Basket -->
 
                 <li>
                     <a href="{% url 'basket:view' %}" class="menu-link">
@@ -67,6 +88,8 @@
                         {% endif %}
                     </a>
                 </li>
+
+                <!-- Auth -->
 
                 <li>
                     {% if user.is_authenticated %}

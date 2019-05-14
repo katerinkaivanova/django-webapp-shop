@@ -22,54 +22,24 @@
 {% block content %}
     <div class="container">
         <section class="contacts-box padding-site">
-            <article class="contact-item">
-                <img src="{% static 'img/geo-marker.png' %}" alt="marker">
-                <h3 class="contact-name">California</h3>
-                <div class="contact-value">
-                    <h4 class="contact-title">Phone:</h4>
-                    <p class="contact-phone">1900 - 1234 - 5678</p>
-                </div>
-                <div class="contact-value">
-                    <h4 class="contact-title">Email:</h4>
-                    <p class="contact-email">info@interior.com</p>
-                </div>
-                <div class="contact-value">
-                    <h4 class="contact-title">Address:</h4>
-                    <p class="contact-address">12 W 1st St, 90001 Los Angeles, California</p>
-                </div>
-            </article>
-            <article class="contact-item">
-                <img src="{% static 'img/geo-marker.png' %}" alt="marker">
-                <h3 class="contact-name">California</h3>
-                <div class="contact-value">
-                    <h4 class="contact-title">Phone:</h4>
-                    <p class="contact-phone">1900 - 1234 - 5678</p>
-                </div>
-                <div class="contact-value">
-                    <h4 class="contact-title">Email:</h4>
-                    <p class="contact-email">info@interior.com</p>
-                </div>
-                <div class="contact-value">
-                    <h4 class="contact-title">Address:</h4>
-                    <p class="contact-address">12 W 1st St, 90001 Los Angeles, California</p>
-                </div>
-            </article>
-            <article class="contact-item">
-                <img src="{% static 'img/geo-marker.png' %}" alt="marker">
-                <h3 class="contact-name">California</h3>
-                <div class="contact-value">
-                    <h4 class="contact-title">Phone:</h4>
-                    <p class="contact-phone">1900 - 1234 - 5678</p>
-                </div>
-                <div class="contact-value">
-                    <h4 class="contact-title">Email:</h4>
-                    <p class="contact-email">info@interior.com</p>
-                </div>
-                <div class="contact-value">
-                    <h4 class="contact-title">Address:</h4>
-                    <p class="contact-address">12 W 1st St, 90001 Los Angeles, California</p>
-                </div>
-            </article>
+            {% for location in locations %}
+                <article class="contact-item">
+                    <img src="{% static 'img/geo-marker.png' %}" alt="marker">
+                    <h3 class="contact-name">{{ location.name }}</h3>
+                    <div class="contact-value">
+                        <h4 class="contact-title">Phone:</h4>
+                        <p class="contact-phone">{{ location.phone }}</p>
+                    </div>
+                    <div class="contact-value">
+                        <h4 class="contact-title">Email:</h4>
+                        <p class="contact-email">{{ location.email }}</p>
+                    </div>
+                    <div class="contact-value">
+                        <h4 class="contact-title">Address:</h4>
+                        <p class="contact-address">{{ location.address }}</p>
+                    </div>
+                </article>
+            {% endfor %}
         </section>
     </div>
 {% endblock %}
