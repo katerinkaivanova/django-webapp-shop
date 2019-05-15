@@ -101,6 +101,7 @@ body {
     list-style-type: none;
     padding: 5px 0;
     font-size: 13px;
+    background-color: #fdfdfe;
     border: 1px solid #ddd;
     border-radius: 0.3em;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);

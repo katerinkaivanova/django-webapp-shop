@@ -1,24 +1,32 @@
 {% for item in basket_items %}
-    <div class="basket_record">
-        <img src="/media/{{ item.product.image }}" 
-             alt="{{ item.product.short_desc }}">
-        <span class="category_name">{{ item.product.category.name }}</span> 
-        <span class="product_name">{{ item.product.name }}</span>
-        <span class="product_price">{{ item.product.price }}&#36;</span>
-        <input type="number" name="{{ item.pk }}" min="0" 
-                             value="{{ item.quantity }}">
-        <span class="product_cost">{{ item.cost }}&#36;</span>
-        <button class="btn btn-round">
-            <a href="{% url 'basket:remove' item.pk %}" class="">
-                удалить
-            </a>
-        </button>
+    <div class="row mb-3 pl-3">
+        <div class="col-4">
+            <img src="/media/{{ item.product.image }}" alt="{{ item.product.short_desc }}" \
+                 class="border border-light" \
+                 style="border-radius: 1.25rem; width: 200px;">
+        </div>
+        <div class="col-8">
+            <span class="product_name">{{ item.product.name }} ({{ item.product.category.name }})</span><br>
+            <span class="product_price">Price: {{ item.product.price }}&#36; / Cost: {{ item.product_cost }}&#36;</span><br>
+
+            <form action="">
+                <div class="form-row">
+                    <input type="number" name="{{ item.pk }}" min="0" value="{{ item.quantity }}"
+                           class="form-control col-md-1">
+
+                    <a href="{% url 'basket:remove' item.pk %}" class="btn btn-secondary btn-round">
+                        Delete
+                    </a>
+                </div>
+            </form>
+        </div>
     </div>
 {% endfor %}
+<hr>
 
 {% if basket_items %}
-    <div class="basket_summary">
-        Total quantity: {{ basket_items.0.total_quantity }}
-        Total cost: {{ basket_items.0.total_cost }}&#36;
+    <div>
+        <span>Total quantity: {{ basket_items.0.total_quantity }}</span><br>
+        <span>Total cost: {{ basket_items.0.total_cost }}&#36;</span>
     </div>
 {% endif %}

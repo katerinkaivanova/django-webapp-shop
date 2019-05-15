@@ -2,10 +2,6 @@
 {% load static %}
 
 {% block content %}
-    <div class="basket_list">
-        {% include 'basketapp/includes/inc_basket_list.html' %}
-    </div>
-    <button class="btn btn-round">
-        <a href="{% url 'main' %}">Geekshop</a>
-    </button>
+    {% include 'basketapp/includes/inc_basket_list.html' %}
+    <a href="{% url 'main' %}" class="btn btn-success btn-round">Geekshop</a>
 {% endblock %}
