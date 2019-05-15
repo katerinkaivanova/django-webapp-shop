@@ -19,18 +19,19 @@
     {% endblock %}
 </head>
 <body>
-    <div class="basket_container">
-    <div class="h2 text-center head">
-        Yours cart,
-        {% if user.first_name %}
-            {{ user.first_name|title}}
-        {% else %}
-            User
-        {% endif %}
-    </div>
-
-    {% block content %}
-    {% endblock %}
+    <div class="container">
+        <br>
+        <h1 class="display-4 text-center">
+            Your cart,
+            {% if user.first_name %}
+                {{ user.first_name|title}}
+            {% else %}
+                User
+            {% endif %}
+        </h1>
+        <hr>
+        {% block content %}
+        {% endblock %}
     </div>
 </body>
 </html>

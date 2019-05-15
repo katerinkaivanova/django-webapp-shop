@@ -15,12 +15,16 @@ urlpatterns = [
     path('', mainapp.main_view, name='main'),
     path('auth/', include('authapp.urls', namespace='auth')),
     path('basket/', include('basketapp.urls', namespace='basket')),
+    path('orders/', include('ordersapp.urls', namespace='orders')),
+
     path('products/', include('mainapp.urls', namespace='products')),
     path('history/', mainapp.history_view, name='history'),
     path('showroom/', mainapp.showroom_view, name='showroom'),
     path('contact/', mainapp.contact_view, name='contact'),
+
     path('admin_custom/', include('adminapp.urls', namespace='admin_custom')),
     path('admin/', admin.site.urls),
+
     path('social/', include('social_django.urls', namespace='social')),
     path('__debug__/', include(debug_toolbar.urls)),
 ]
