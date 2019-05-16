@@ -19,15 +19,6 @@ class OrderList(ListView):
         return Order.objects.filter(user=self.request.user)
 
 
-class OrderRead(DetailView):
-    model = Order
-
-    def get_context_data(self, **kwargs):
-        context = super(OrderRead, self).get_context_data(**kwargs)
-        context['title'] = 'заказ/просмотр'
-        return context
-
-
 class OrderItemsCreate(CreateView):
     model = Order
     fields = []
@@ -49,6 +40,7 @@ class OrderItemsCreate(CreateView):
                 for num, form in enumerate(formset.forms):
                     form.initial['product'] = basket_items[num].product
                     form.initial['quantity'] = basket_items[num].quantity
+                    basket_items[num].delete()
             else:
                 formset = OrderFormSet()
 
@@ -65,8 +57,11 @@ class OrderItemsCreate(CreateView):
             if orderitems.is_valid():
                 orderitems.instance = self.object
                 orderitems.save()
-            # удаляем пустой заказ
             self.request.user.basket.all().delete()
+
+        # удаляем пустой заказ
+        if self.object.get_total_cost() == 0:
+            self.object.delete()
 
         return super().form_valid(form)
 
@@ -97,7 +92,20 @@ class OrderItemsUpdate(UpdateView):
                 orderitems.instance = self.object
                 orderitems.save()
 
+        # удаляем пустой заказ
+        if self.object.get_total_cost() == 0:
+            self.object.delete()
+
         return super().form_valid(form)
+
+
+class OrderRead(DetailView):
+    model = Order
+
+    def get_context_data(self, **kwargs):
+        context = super(OrderRead, self).get_context_data(**kwargs)
+        context['title'] = 'заказ/просмотр'
+        return context
 
 
 class OrderDelete(DeleteView):
@@ -111,4 +119,3 @@ def order_forming_complete(request, pk):
     order.save()
 
     return HttpResponseRedirect(reverse('ordersapp:orders_list'))
-
