@@ -1,16 +1,16 @@
 {% if object.status == 'FM' %}
     <a href="{% url 'ordersapp:order_forming_complete' object.pk %}"
-       class="btn btn-warning btn-round form-control last">
+       class="btn btn-success btn-round">
         Place Order
     </a>
-    <a href="{% url 'ordersapp:order_delete' object.pk %}" class="btn btn-primary btn-round form-control last">
+    <a href="{% url 'ordersapp:order_delete' object.pk %}" class="btn btn-warning btn-round">
         Delete
     </a>
 {% endif %}
 
-<a href="{% url 'ordersapp:orders_list' %}" class="btn btn-info btn-round form-control last">
+<a href="{% url 'ordersapp:orders_list' %}" class="btn btn-secondary btn-round">
     Orders List
 </a>
-<a href="{% url 'main' %}" class="btn btn-primary btn-round form-control last">
+<a href="{% url 'main' %}" class="btn btn-secondary btn-round">
     Geekshop
 </a>
