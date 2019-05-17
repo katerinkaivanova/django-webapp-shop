@@ -24,7 +24,6 @@ def basket_view(request):
 
 @login_required
 def basket_add_view(request, pk):
-
     if 'login' in request.META.get('HTTP_REFERER'):
         return HttpResponseRedirect(reverse('products:product', args=[pk]))
 
@@ -60,4 +59,12 @@ def basket_edit_view(request, pk):
         else:
             new_basket_item.delete()
 
-        return HttpResponse('ok')
+        basket_items = Basket.objects.filter(user=request.user).order_by('product__category')
+
+        my_content = {
+            'basket_items': basket_items,
+        }
+
+        result = render_to_string('basketapp/includes/inc_basket_list.html', my_content)
+
+        return JsonResponse({'result': result})
