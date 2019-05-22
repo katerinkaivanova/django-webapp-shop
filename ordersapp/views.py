@@ -1,18 +1,19 @@
-from django.shortcuts import get_object_or_404, HttpResponseRedirect
-from django.urls import reverse, reverse_lazy
 from django.db import transaction
-
 from django.forms import inlineformset_factory
-
-from django.views.generic import ListView, CreateView, UpdateView, DeleteView
+from django.http import HttpResponseRedirect, JsonResponse
+from django.shortcuts import render, get_object_or_404
+from django.urls import reverse_lazy, reverse
+from django.views.generic import ListView
 from django.views.generic.detail import DetailView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 from django.dispatch import receiver
 from django.db.models.signals import pre_save, pre_delete
 
 from basketapp.models import Basket
-from ordersapp.models import Order, OrderItem
+from mainapp.models import Product
 from ordersapp.forms import OrderForm, OrderItemForm
+from ordersapp.models import Order, OrderItem
 
 
 class OrderList(ListView):
@@ -25,18 +26,19 @@ class OrderList(ListView):
 class OrderItemsCreate(CreateView):
     model = Order
     fields = []
-    # form_class = OrderForm
     success_url = reverse_lazy('ordersapp:orders_list')
 
     def get_context_data(self, **kwargs):
-        data = super(OrderItemsCreate, self).get_context_data(**kwargs)
+        print('get create context')
+
+        data = super().get_context_data(**kwargs)
         OrderFormSet = inlineformset_factory(Order, OrderItem, form=OrderItemForm, extra=1)
 
         if self.request.POST:
-            formset = OrderFormSet(self.request.POST, self.request.FILES)
+            print('add new product')
+            formset = OrderFormSet(self.request.POST, self.request.FILES, instance=self.object)
         else:
             basket_items = self.request.user.basket.all()
-
             if len(basket_items):
                 OrderFormSet = inlineformset_factory(Order, OrderItem, form=OrderItemForm, extra=len(basket_items))
                 formset = OrderFormSet()
@@ -44,7 +46,6 @@ class OrderItemsCreate(CreateView):
                     form.initial['product'] = basket_items[num].product
                     form.initial['quantity'] = basket_items[num].quantity
                     form.initial['price'] = basket_items[num].product.price
-                    basket_items[num].delete()
             else:
                 formset = OrderFormSet()
 
@@ -70,13 +71,23 @@ class OrderItemsCreate(CreateView):
         return super().form_valid(form)
 
 
+class OrderRead(DetailView):
+    model = Order
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'заказ/просмотр'
+        return context
+
+
 class OrderItemsUpdate(UpdateView):
     model = Order
     fields = []
     success_url = reverse_lazy('ordersapp:orders_list')
 
     def get_context_data(self, **kwargs):
-        data = super(OrderItemsUpdate, self).get_context_data(**kwargs)
+        print('update get context')
+        data = super().get_context_data(**kwargs)
         OrderFormSet = inlineformset_factory(Order, OrderItem, form=OrderItemForm, extra=1)
 
         if self.request.POST:
@@ -107,15 +118,6 @@ class OrderItemsUpdate(UpdateView):
         return super().form_valid(form)
 
 
-class OrderRead(DetailView):
-    model = Order
-
-    def get_context_data(self, **kwargs):
-        context = super(OrderRead, self).get_context_data(**kwargs)
-        context['title'] = 'заказ/просмотр'
-        return context
-
-
 class OrderDelete(DeleteView):
     model = Order
     success_url = reverse_lazy('ordersapp:orders_list')
@@ -132,9 +134,8 @@ def order_forming_complete(request, pk):
 @receiver(pre_save, sender=OrderItem)
 @receiver(pre_save, sender=Basket)
 def product_quantity_update_save(sender, update_fields, instance, **kwargs):
-    print('update receiver works')
+    print('update receiver working...')
     print(sender, instance.product, instance.quantity)
-
     if instance.pk:
         instance.product.quantity -= instance.quantity - sender.get_item(instance.pk).quantity
     else:
@@ -145,8 +146,18 @@ def product_quantity_update_save(sender, update_fields, instance, **kwargs):
 @receiver(pre_delete, sender=OrderItem)
 @receiver(pre_delete, sender=Basket)
 def product_quantity_update_delete(sender, instance, **kwargs):
-    print('delete receiver works')
+    print('delete receiver working...')
     print(sender, instance.product, instance.quantity)
-
+    # print(sender, type(instance))
     instance.product.quantity += instance.quantity
     instance.product.save()
+
+
+def get_product_price(request, pk):
+    print('ordersapp add product...')
+    if request.is_ajax():
+        product = Product.objects.filter(pk=int(pk)).first()
+        if product:
+            return JsonResponse({'price': product.price})
+        else:
+            return JsonResponse({'price': 0})

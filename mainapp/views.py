@@ -116,9 +116,31 @@ def showroom_view(request):
 
 def contact_view(request):
 
+    locations = [
+        {
+            'name': 'California',
+            'phone': '000 - 000 - 000',
+            'email': 'california@interior.com',
+            'address': 'Los Angeles, California',
+        },
+        {
+            'name': 'Florida',
+            'phone': '111 - 111 - 111',
+            'email': 'florida@interior.com',
+            'address': 'Tallahassee, Florida',
+        },
+        {
+            'name': 'North Carolina',
+            'phone': '222 - 222 - 222',
+            'email': 'ncarolina@interior.com',
+            'address': 'Raleigh, North Carolina',
+        }
+    ]
+
     my_context = {
         'title': links_menu[4]['title'],
         'links_menu': links_menu,
+        'locations': locations,
     }
 
     return render(request, 'contact.html', my_context)

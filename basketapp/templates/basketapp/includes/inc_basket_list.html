@@ -23,13 +23,14 @@
             </div>
         </div>
     {% endfor %}
-    <hr>
+{% else %}
+    <span>Cart is empty</span>
+{% endif %}
+<hr>
 
+{% if basket_items %}
     <div>
         <span>Total quantity: {{ basket_items.0.total_quantity }}</span><br>
         <span>Total cost: {{ basket_items.0.total_cost }}&#36;</span>
     </div>
-{% else %}
-    Cart is empty
-    <hr>
 {% endif %}

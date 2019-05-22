@@ -1,10 +1,9 @@
 {% extends "ordersapp/base.html" %}
-
 {% load static %}
 
 {% block content %}
     {% include 'ordersapp/includes/inc_order_summary.html' %}
-    <div class="d-flex justify-content-center align-items-center container order_form">
+    <div class="order_form">
         <form method="post">
             {% csrf_token %}
             {{ form.as_p }}
@@ -35,7 +34,9 @@
                                     {{ field }}
                                 {% else %}
                                     {% if field.value %}
-                                        <span class="orderitems-{{ forloop.parentloop.counter0 }}-price">{{ field.value }}&#36;</span>
+                                        <span class="orderitems-{{ forloop.parentloop.counter0 }}-price">
+                                         {{ field.value }}&#36;
+                                       </span>
                                     {% endif %}
                                 {% endif %}
                             </td>
